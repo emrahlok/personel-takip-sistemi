@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Personel_Finansal_Takip.Models.personel_puantaj>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/employee/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Puantaj Geçmişim</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <table id="datatable" class="table table-striped table-bordered" style="font-size: 90%;">
+                        <thead>
+                            <tr>
+                                <th>Adı<br>Soyadı</th>
+                                <th>
+                                    SGK&nbsp;Sicil&nbsp;No<br>
+                                    T.C.&nbsp;Kimlik&nbsp;No
+                                </th>
+                                <th>
+                                    İşe&nbsp;Giriş&nbsp;Tar.<br>
+                                    Puantaj&nbsp;Yıl/Ay
+                                </th>
+                                <th>
+                                    Çal.<br>
+                                    Gn.
+                                </th>
+                                <th>
+                                    Haf.<br>
+                                    Tatil
+                                </th>
+                                <th>
+                                    Gen.<br>
+                                    Tatil
+                                </th>
+                                <th>
+                                    Üc.li<br>
+                                    İzin
+                                </th>
+                                <th>
+                                    Üc.siz<br>
+                                    İzin
+                                </th>
+                                <th>
+                                    Sıhhi<br>
+                                    İzin
+                                </th>
+                                <th>
+                                    Yıllık<br>
+                                    İzin
+                                </th>
+                                <th>
+                                    Maz.<br>
+                                    İzin
+                                </th>
+                                <th>
+                                    Ücret<br>
+                                    Gn.
+                                </th>
+                                <th>
+                                    Sig.<br>
+                                    Gn.
+                                </th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var puantaj in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @puantaj.personel.ad<br />
+                                        @puantaj.personel.soyad
+                                    </td>
+                                    <td>
+                                        @puantaj.personel.ssk_no<br />
+                                        @puantaj.personel.tc_kimlik_no
+                                    </td>
+                                    <td>
+                                        @if (puantaj.personel.ise_giris_tarihi.HasValue)
+                                        { <div>@puantaj.personel.ise_giris_tarihi.Value.ToString("yyyy\\/MM\\/dd")</div> }
+                                        @if (puantaj.ay_yil.HasValue)
+                                        { <div>@puantaj.ay_yil.Value.ToString("yyyy\\/MM")</div> }
+                                    </td>
+                                    <td>
+                                        @puantaj.calisilan_gun
+                                    </td>
+                                    <td>
+                                        @puantaj.hafta_tatili
+                                    </td>
+                                    <td>
+                                        @puantaj.genel_tatil
+                                    </td>
+                                    <td>
+                                        @puantaj.ucretli_izin
+                                    </td>
+                                    <td>
+                                        @puantaj.ucretsiz_izin
+                                    </td>
+                                    <td>
+                                        @puantaj.sihhi_izin
+                                    </td>
+                                    <td>
+                                        @puantaj.yillik_izin
+                                    </td>
+                                    <td>
+                                        @puantaj.mazeretsiz_izin
+                                    </td>
+                                    <td>
+                                        @puantaj.ucret_gun
+                                    </td>
+                                    <td>
+                                        @puantaj.sigorta_gun
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-xs" style="font-size: 80%;" onclick="goruntule(@puantaj.Id)" data-toggle="modal" data-target=".bs-example-modal-sm">Görüntüle</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-dialog" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+</div>
+
+@section Scripts
+{
+    <link href="~/js/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/js/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/js/datatables/buttons.bootstrap.min.js"></script>
+    <script src="~/js/datatables/jszip.min.js"></script>
+    <script src="~/js/datatables/pdfmake.min.js"></script>
+    <script src="~/js/datatables/vfs_fonts.js"></script>
+    <script src="~/js/datatables/buttons.html5.min.js"></script>
+    <script src="~/js/datatables/buttons.print.min.js"></script>
+    <script src="~/js/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/js/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/js/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/js/datatables/responsive.bootstrap.min.js"></script>
+    <script src="~/js/datatables/dataTables.scroller.min.js"></script>
+    <script type="text/javascript">
+        var progress = null;
+        var content = null;
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+            var url = '@Url.Action("GetProgress", "PuantajCetveli")';
+            $.post(url, {},
+            function (data) {
+                progress = data;
+            });
+        });
+        function goruntule(id) {
+            $('#modal-dialog').empty();
+            $('#modal-dialog').append(progress);
+            var url = '@Url.Action("GetPuantajView", "PuantajCetveli")';
+            $.post(url,
+                { puantaj_id: id },
+            function (data) {
+                content = data;
+                $('#modal-dialog').empty();
+                $('#modal-dialog').append(data);
+            });
+        };
+    </script>
+}

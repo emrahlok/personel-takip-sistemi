@@ -1,0 +1,1230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="personeltakipsistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="fazla_mesai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="sure_saat" Type="int" />
+          <Property Name="tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="gunler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gun" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="is_giris_cikis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="tur_id" Type="int" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="tarihsaat" Type="datetime" />
+          <Property Name="dogrulama_resmi" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="is_giris_cikis_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="tur" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="izin_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tur" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="izinler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="talep_tarihi" Type="datetime" />
+          <Property Name="onay_tarihi" Type="datetime" />
+          <Property Name="son_degisiklik" Type="datetime" />
+          <Property Name="tur_id" Type="int" />
+          <Property Name="izin_baslangic" Type="date" />
+          <Property Name="izin_bitis" Type="date" />
+          <Property Name="ise_baslangic" Type="date" />
+          <Property Name="sure" Type="int" />
+          <Property Name="yol_izni" Type="int" />
+          <Property Name="izinde_bul_adres" Type="nvarchar(max)" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+          <Property Name="red_durumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="maas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="ay_yil" Type="date" />
+          <Property Name="ucret_gun_sayisi" Type="float" />
+          <Property Name="prim_gunu_sayisi" Type="float" />
+          <Property Name="prim_saati" Type="float" />
+          <Property Name="gun_brut_ucreti" Type="float" />
+          <Property Name="brut_toplam" Type="float" />
+          <Property Name="fazla_mesai" Type="float" />
+          <Property Name="sair_odeme" Type="float" />
+          <Property Name="vergi_matrahi" Type="float" />
+          <Property Name="sigorta_matrahi" Type="float" />
+          <Property Name="damga_vergisi" Type="float" />
+          <Property Name="gelir_vergisi" Type="float" />
+          <Property Name="asgari_gecim_indirimi" Type="float" />
+          <Property Name="sigorta_kesintisi" Type="float" />
+          <Property Name="issizlik_sigortasi_kesintisi" Type="float" />
+          <Property Name="isveren_sgk_istisnasi" Type="float" />
+          <Property Name="net_ucret" Type="float" />
+          <Property Name="odenecek_ucret" Type="float" />
+        </EntityType>
+        <EntityType Name="oranlarbordro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sgk_primi_isci_payi" Type="float" />
+          <Property Name="issizlik_sigortasi_isci_payi" Type="float" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_1" Type="float" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_2" Type="float" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_3" Type="float" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_4" Type="float" />
+          <Property Name="damga_vergisi" Type="float" />
+          <Property Name="agi_kendisi" Type="float" />
+          <Property Name="agi_esi" Type="float" />
+          <Property Name="agi_cocuk_1" Type="float" />
+          <Property Name="agi_cocuk_2" Type="float" />
+          <Property Name="agi_cocuk_3" Type="float" />
+          <Property Name="agi_cocuk_diger" Type="float" />
+          <Property Name="isveren_sgk_istisnasi" Type="float" />
+          <Property Name="issizlik_sigortasi_isveren_payi" Type="float" />
+          <Property Name="sgk_primi_isveren_payi" Type="float" />
+          <Property Name="sgk_primi_toplam" Type="float" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilk_soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="tc_kimlik_no" Type="nvarchar" MaxLength="11" />
+          <Property Name="cinsiyet" Type="ntext" />
+          <Property Name="dogum_tarihi" Type="date" />
+          <Property Name="dogum_yeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="baba_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="anne_adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ise_giris_tarihi" Type="date" />
+          <Property Name="isten_cikis_tarihi" Type="date" />
+          <Property Name="ssk_no" Type="nvarchar" MaxLength="13" />
+          <Property Name="statu" Type="ntext" />
+          <Property Name="medeni_hal" Type="ntext" />
+          <Property Name="cocuk_sayisi" Type="int" />
+          <Property Name="departman" Type="ntext" />
+          <Property Name="gorev" Type="ntext" />
+          <Property Name="tahsil" Type="ntext" />
+          <Property Name="meslek" Type="ntext" />
+          <Property Name="ev_tel" Type="nvarchar" MaxLength="11" />
+          <Property Name="is_tel" Type="nvarchar" MaxLength="11" />
+          <Property Name="cep_tel" Type="nvarchar" MaxLength="11" />
+          <Property Name="e_posta" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="rol_id" Type="int" />
+          <Property Name="adres" Type="nvarchar(max)" />
+          <Property Name="adres_il" Type="nvarchar" MaxLength="50" />
+          <Property Name="adres_ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="kan_grubu" Type="nvarchar" MaxLength="50" />
+          <Property Name="nufus_seri_no" Type="nvarchar" MaxLength="3" />
+          <Property Name="nufus_no" Type="nvarchar" MaxLength="6" />
+          <Property Name="nfs_kayitli_il" Type="nvarchar" MaxLength="50" />
+          <Property Name="nfs_kayitli_ilce" Type="nvarchar" MaxLength="50" />
+          <Property Name="nfs_kytli_mah_koy" Type="nvarchar" MaxLength="50" />
+          <Property Name="cilt_no" Type="int" />
+          <Property Name="aile_sira_no" Type="int" />
+          <Property Name="sira_no" Type="int" />
+          <Property Name="vergi_no" Type="int" />
+          <Property Name="haftalik_izin_gun" Type="int" />
+          <Property Name="aciklama" Type="nvarchar(max)" />
+          <Property Name="ResimBoyutu" Type="int" />
+          <Property Name="DosyaIsmi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResimVeri" Type="varbinary(max)" />
+          <Property Name="brut_maas" Type="float" />
+          <Property Name="net_maas" Type="float" />
+        </EntityType>
+        <EntityType Name="personel_puantaj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="ay_yil" Type="date" />
+          <Property Name="brut_ucret" Type="float" />
+          <Property Name="net_ucret" Type="float" />
+          <Property Name="calisilan_gun" Type="float" />
+          <Property Name="hafta_tatili" Type="float" />
+          <Property Name="genel_tatil" Type="float" />
+          <Property Name="ucretli_izin" Type="float" />
+          <Property Name="ucretsiz_izin" Type="float" />
+          <Property Name="sihhi_izin" Type="float" />
+          <Property Name="yillik_izin" Type="float" />
+          <Property Name="mazeretsiz_izin" Type="float" />
+          <Property Name="ucret_gun" Type="float" />
+          <Property Name="sigorta_gun" Type="float" />
+          <Property Name="sigorta_saat" Type="float" />
+          <Property Name="fazla_mesai_saat" Type="float" />
+        </EntityType>
+        <EntityType Name="personel_rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rol" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="puantaj_gunler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_puantaj_id" Type="int" />
+          <Property Name="gun" Type="int" />
+          <Property Name="gun_pauntaj" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="resmi_tatil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tur_id" Type="int" />
+          <Property Name="tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="resmi_tatil_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tur" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="yillik_maas_raporlari">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personel_id" Type="int" />
+          <Property Name="yil" Type="date" />
+          <Property Name="toplam_prim_gunu_sayisi" Type="float" />
+          <Property Name="toplam_prim_saati" Type="float" />
+          <Property Name="toplam_brut_ucret" Type="float" />
+          <Property Name="toplam_brut_toplam" Type="float" />
+          <Property Name="toplam_fazla_mesai" Type="float" />
+          <Property Name="toplam_sair_odeme" Type="float" />
+          <Property Name="toplam_vergi_matrahi" Type="float" />
+          <Property Name="toplam_sigorta_matrahi" Type="float" />
+          <Property Name="toplam_damga_vergisi" Type="float" />
+          <Property Name="toplam_gelir_vergisi" Type="float" />
+          <Property Name="toplam_asgari_gecim_indirimi" Type="float" />
+          <Property Name="toplam_sigorta_kesintisi" Type="float" />
+          <Property Name="toplam_issizlik_sigortasi_kesintisi" Type="float" />
+          <Property Name="toplam_isveren_sgk_istisnasi" Type="float" />
+          <Property Name="toplam_net_ucret" Type="float" />
+          <Property Name="toplam_odenecek_ucret" Type="float" />
+          <Property Name="sigorta_primi_isveren" Type="float" />
+          <Property Name="issizlik_sigortasi_isveren" Type="float" />
+          <Property Name="toplam_sgk_primi" Type="float" />
+          <Property Name="odenecek_sgk_primi" Type="float" />
+          <Property Name="odenecek_gelir_vergisi" Type="float" />
+          <Property Name="odenecek_issizlik_sigorta_kesintisi" Type="float" />
+          <Property Name="toplam1" Type="float" />
+          <Property Name="toplam2" Type="float" />
+          <Property Name="net_odenecek_sgk_primi" Type="float" />
+        </EntityType>
+        <Association Name="FK_fazla_mesai_ToTable_1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="fazla_mesai" Type="Self.fazla_mesai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fazla_mesai">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_is_giris_cikis_ToTable">
+          <End Role="is_giris_cikis_tur" Type="Self.is_giris_cikis_tur" Multiplicity="0..1" />
+          <End Role="is_giris_cikis" Type="Self.is_giris_cikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="is_giris_cikis_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="is_giris_cikis">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_is_giris_cikis_ToTable_1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="is_giris_cikis" Type="Self.is_giris_cikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="is_giris_cikis">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_izinler_ToTable_1">
+          <End Role="izin_tur" Type="Self.izin_tur" Multiplicity="0..1" />
+          <End Role="izinler" Type="Self.izinler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="izin_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="izinler">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_izinler_ToTable_2">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="izinler" Type="Self.izinler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="izinler">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_maas_ToTable_1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="maas" Type="Self.maas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="maas">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_puantaj_ToTable_1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="personel_puantaj" Type="Self.personel_puantaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personel_puantaj">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_ToTable_1">
+          <End Role="gunler" Type="Self.gunler" Multiplicity="0..1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gunler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="haftalik_izin_gun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_ToTable_2">
+          <End Role="personel_rol" Type="Self.personel_rol" Multiplicity="0..1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel_rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resmi_tatil_ToTable_1">
+          <End Role="resmi_tatil_tur" Type="Self.resmi_tatil_tur" Multiplicity="0..1" />
+          <End Role="resmi_tatil" Type="Self.resmi_tatil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resmi_tatil_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resmi_tatil">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToTable_1">
+          <End Role="personel_puantaj" Type="Self.personel_puantaj" Multiplicity="0..1" />
+          <End Role="puantaj_gunler" Type="Self.puantaj_gunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel_puantaj">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="puantaj_gunler">
+              <PropertyRef Name="personel_puantaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yillik_maas_raporlari_ToTable_1">
+          <End Role="personel" Type="Self.personel" Multiplicity="0..1" />
+          <End Role="yillik_maas_raporlari" Type="Self.yillik_maas_raporlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="yillik_maas_raporlari">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="personeltakipsistemiModelStoreContainer">
+          <EntitySet Name="fazla_mesai" EntityType="Self.fazla_mesai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gunler" EntityType="Self.gunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="is_giris_cikis" EntityType="Self.is_giris_cikis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="is_giris_cikis_tur" EntityType="Self.is_giris_cikis_tur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="izin_tur" EntityType="Self.izin_tur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="izinler" EntityType="Self.izinler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="maas" EntityType="Self.maas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="oranlarbordro" EntityType="Self.oranlarbordro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel" EntityType="Self.personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel_puantaj" EntityType="Self.personel_puantaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel_rol" EntityType="Self.personel_rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="puantaj_gunler" EntityType="Self.puantaj_gunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="resmi_tatil" EntityType="Self.resmi_tatil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="resmi_tatil_tur" EntityType="Self.resmi_tatil_tur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="yillik_maas_raporlari" EntityType="Self.yillik_maas_raporlari" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_fazla_mesai_ToTable_1" Association="Self.FK_fazla_mesai_ToTable_1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="fazla_mesai" EntitySet="fazla_mesai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_is_giris_cikis_ToTable" Association="Self.FK_is_giris_cikis_ToTable">
+            <End Role="is_giris_cikis_tur" EntitySet="is_giris_cikis_tur" />
+            <End Role="is_giris_cikis" EntitySet="is_giris_cikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_is_giris_cikis_ToTable_1" Association="Self.FK_is_giris_cikis_ToTable_1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="is_giris_cikis" EntitySet="is_giris_cikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_izinler_ToTable_1" Association="Self.FK_izinler_ToTable_1">
+            <End Role="izin_tur" EntitySet="izin_tur" />
+            <End Role="izinler" EntitySet="izinler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_izinler_ToTable_2" Association="Self.FK_izinler_ToTable_2">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="izinler" EntitySet="izinler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_maas_ToTable_1" Association="Self.FK_maas_ToTable_1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="maas" EntitySet="maas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_puantaj_ToTable_1" Association="Self.FK_personel_puantaj_ToTable_1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="personel_puantaj" EntitySet="personel_puantaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_ToTable_1" Association="Self.FK_personel_ToTable_1">
+            <End Role="gunler" EntitySet="gunler" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_ToTable_2" Association="Self.FK_personel_ToTable_2">
+            <End Role="personel_rol" EntitySet="personel_rol" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resmi_tatil_ToTable_1" Association="Self.FK_resmi_tatil_ToTable_1">
+            <End Role="resmi_tatil_tur" EntitySet="resmi_tatil_tur" />
+            <End Role="resmi_tatil" EntitySet="resmi_tatil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToTable_1" Association="Self.FK_Table_ToTable_1">
+            <End Role="personel_puantaj" EntitySet="personel_puantaj" />
+            <End Role="puantaj_gunler" EntitySet="puantaj_gunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yillik_maas_raporlari_ToTable_1" Association="Self.FK_yillik_maas_raporlari_ToTable_1">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="yillik_maas_raporlari" EntitySet="yillik_maas_raporlari" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="personeltakipsistemiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="personeltakipsistemiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="fazla_mesai" EntityType="personeltakipsistemiModel.fazla_mesai" />
+          <EntitySet Name="gunlers" EntityType="personeltakipsistemiModel.gunler" />
+          <EntitySet Name="is_giris_cikis" EntityType="personeltakipsistemiModel.is_giris_cikis" />
+          <EntitySet Name="is_giris_cikis_tur" EntityType="personeltakipsistemiModel.is_giris_cikis_tur" />
+          <EntitySet Name="izin_tur" EntityType="personeltakipsistemiModel.izin_tur" />
+          <EntitySet Name="izinlers" EntityType="personeltakipsistemiModel.izinler" />
+          <EntitySet Name="maas" EntityType="personeltakipsistemiModel.maas" />
+          <EntitySet Name="oranlarbordroes" EntityType="personeltakipsistemiModel.oranlarbordro" />
+          <EntitySet Name="personels" EntityType="personeltakipsistemiModel.personel" />
+          <EntitySet Name="personel_puantaj" EntityType="personeltakipsistemiModel.personel_puantaj" />
+          <EntitySet Name="personel_rol" EntityType="personeltakipsistemiModel.personel_rol" />
+          <EntitySet Name="puantaj_gunler" EntityType="personeltakipsistemiModel.puantaj_gunler" />
+          <EntitySet Name="resmi_tatil" EntityType="personeltakipsistemiModel.resmi_tatil" />
+          <EntitySet Name="resmi_tatil_tur" EntityType="personeltakipsistemiModel.resmi_tatil_tur" />
+          <EntitySet Name="yillik_maas_raporlari" EntityType="personeltakipsistemiModel.yillik_maas_raporlari" />
+          <AssociationSet Name="FK_fazla_mesai_ToTable_1" Association="personeltakipsistemiModel.FK_fazla_mesai_ToTable_1">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="fazla_mesai" EntitySet="fazla_mesai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_ToTable_1" Association="personeltakipsistemiModel.FK_personel_ToTable_1">
+            <End Role="gunler" EntitySet="gunlers" />
+            <End Role="personel" EntitySet="personels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_is_giris_cikis_ToTable" Association="personeltakipsistemiModel.FK_is_giris_cikis_ToTable">
+            <End Role="is_giris_cikis_tur" EntitySet="is_giris_cikis_tur" />
+            <End Role="is_giris_cikis" EntitySet="is_giris_cikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_is_giris_cikis_ToTable_1" Association="personeltakipsistemiModel.FK_is_giris_cikis_ToTable_1">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="is_giris_cikis" EntitySet="is_giris_cikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_izinler_ToTable_1" Association="personeltakipsistemiModel.FK_izinler_ToTable_1">
+            <End Role="izin_tur" EntitySet="izin_tur" />
+            <End Role="izinler" EntitySet="izinlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_izinler_ToTable_2" Association="personeltakipsistemiModel.FK_izinler_ToTable_2">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="izinler" EntitySet="izinlers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_maas_ToTable_1" Association="personeltakipsistemiModel.FK_maas_ToTable_1">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="maa" EntitySet="maas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_puantaj_ToTable_1" Association="personeltakipsistemiModel.FK_personel_puantaj_ToTable_1">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="personel_puantaj" EntitySet="personel_puantaj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_ToTable_2" Association="personeltakipsistemiModel.FK_personel_ToTable_2">
+            <End Role="personel_rol" EntitySet="personel_rol" />
+            <End Role="personel" EntitySet="personels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_yillik_maas_raporlari_ToTable_1" Association="personeltakipsistemiModel.FK_yillik_maas_raporlari_ToTable_1">
+            <End Role="personel" EntitySet="personels" />
+            <End Role="yillik_maas_raporlari" EntitySet="yillik_maas_raporlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_ToTable_1" Association="personeltakipsistemiModel.FK_Table_ToTable_1">
+            <End Role="personel_puantaj" EntitySet="personel_puantaj" />
+            <End Role="puantaj_gunler" EntitySet="puantaj_gunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_resmi_tatil_ToTable_1" Association="personeltakipsistemiModel.FK_resmi_tatil_ToTable_1">
+            <End Role="resmi_tatil_tur" EntitySet="resmi_tatil_tur" />
+            <End Role="resmi_tatil" EntitySet="resmi_tatil" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="fazla_mesai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="sure_saat" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_fazla_mesai_ToTable_1" FromRole="fazla_mesai" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="gunler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gun" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personels" Relationship="personeltakipsistemiModel.FK_personel_ToTable_1" FromRole="gunler" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="is_giris_cikis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="tur_id" Type="Int32" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="tarihsaat" Type="DateTime" Precision="3" />
+          <Property Name="dogrulama_resmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="is_giris_cikis_tur" Relationship="personeltakipsistemiModel.FK_is_giris_cikis_ToTable" FromRole="is_giris_cikis" ToRole="is_giris_cikis_tur" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_is_giris_cikis_ToTable_1" FromRole="is_giris_cikis" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="is_giris_cikis_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="is_giris_cikis" Relationship="personeltakipsistemiModel.FK_is_giris_cikis_ToTable" FromRole="is_giris_cikis_tur" ToRole="is_giris_cikis" />
+        </EntityType>
+        <EntityType Name="izin_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tur" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="izinlers" Relationship="personeltakipsistemiModel.FK_izinler_ToTable_1" FromRole="izin_tur" ToRole="izinler" />
+        </EntityType>
+        <EntityType Name="izinler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="talep_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="onay_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="son_degisiklik" Type="DateTime" Precision="3" />
+          <Property Name="tur_id" Type="Int32" />
+          <Property Name="izin_baslangic" Type="DateTime" Precision="0" />
+          <Property Name="izin_bitis" Type="DateTime" Precision="0" />
+          <Property Name="ise_baslangic" Type="DateTime" Precision="0" />
+          <Property Name="sure" Type="Int32" />
+          <Property Name="yol_izni" Type="Int32" />
+          <Property Name="izinde_bul_adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="red_durumu" Type="Boolean" />
+          <NavigationProperty Name="izin_tur" Relationship="personeltakipsistemiModel.FK_izinler_ToTable_1" FromRole="izinler" ToRole="izin_tur" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_izinler_ToTable_2" FromRole="izinler" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="maas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="ay_yil" Type="DateTime" Precision="0" />
+          <Property Name="ucret_gun_sayisi" Type="Double" />
+          <Property Name="prim_gunu_sayisi" Type="Double" />
+          <Property Name="prim_saati" Type="Double" />
+          <Property Name="gun_brut_ucreti" Type="Double" />
+          <Property Name="brut_toplam" Type="Double" />
+          <Property Name="fazla_mesai" Type="Double" />
+          <Property Name="sair_odeme" Type="Double" />
+          <Property Name="vergi_matrahi" Type="Double" />
+          <Property Name="sigorta_matrahi" Type="Double" />
+          <Property Name="damga_vergisi" Type="Double" />
+          <Property Name="gelir_vergisi" Type="Double" />
+          <Property Name="asgari_gecim_indirimi" Type="Double" />
+          <Property Name="sigorta_kesintisi" Type="Double" />
+          <Property Name="issizlik_sigortasi_kesintisi" Type="Double" />
+          <Property Name="isveren_sgk_istisnasi" Type="Double" />
+          <Property Name="net_ucret" Type="Double" />
+          <Property Name="odenecek_ucret" Type="Double" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_maas_ToTable_1" FromRole="maa" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="oranlarbordro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sgk_primi_isci_payi" Type="Double" />
+          <Property Name="issizlik_sigortasi_isci_payi" Type="Double" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_1" Type="Double" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_2" Type="Double" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_3" Type="Double" />
+          <Property Name="kumulatif_gelir_vergisi_dilim_4" Type="Double" />
+          <Property Name="damga_vergisi" Type="Double" />
+          <Property Name="agi_kendisi" Type="Double" />
+          <Property Name="agi_esi" Type="Double" />
+          <Property Name="agi_cocuk_1" Type="Double" />
+          <Property Name="agi_cocuk_2" Type="Double" />
+          <Property Name="agi_cocuk_3" Type="Double" />
+          <Property Name="agi_cocuk_diger" Type="Double" />
+          <Property Name="isveren_sgk_istisnasi" Type="Double" />
+          <Property Name="issizlik_sigortasi_isveren_payi" Type="Double" />
+          <Property Name="sgk_primi_isveren_payi" Type="Double" />
+          <Property Name="sgk_primi_toplam" Type="Double" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilk_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tc_kimlik_no" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dogum_tarihi" Type="DateTime" Precision="0" />
+          <Property Name="dogum_yeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="baba_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="anne_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ise_giris_tarihi" Type="DateTime" Precision="0" />
+          <Property Name="isten_cikis_tarihi" Type="DateTime" Precision="0" />
+          <Property Name="ssk_no" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="statu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="medeni_hal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cocuk_sayisi" Type="Int32" />
+          <Property Name="departman" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gorev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tahsil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meslek" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ev_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="is_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="cep_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="e_posta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rol_id" Type="Int32" />
+          <Property Name="adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="adres_il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adres_ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kan_grubu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nufus_seri_no" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="nufus_no" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="nfs_kayitli_il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nfs_kayitli_ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nfs_kytli_mah_koy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cilt_no" Type="Int32" />
+          <Property Name="aile_sira_no" Type="Int32" />
+          <Property Name="sira_no" Type="Int32" />
+          <Property Name="vergi_no" Type="Int32" />
+          <Property Name="haftalik_izin_gun" Type="Int32" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResimBoyutu" Type="Int32" />
+          <Property Name="DosyaIsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResimVeri" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="brut_maas" Type="Double" />
+          <Property Name="net_maas" Type="Double" />
+          <NavigationProperty Name="fazla_mesai" Relationship="personeltakipsistemiModel.FK_fazla_mesai_ToTable_1" FromRole="personel" ToRole="fazla_mesai" />
+          <NavigationProperty Name="gunler" Relationship="personeltakipsistemiModel.FK_personel_ToTable_1" FromRole="personel" ToRole="gunler" />
+          <NavigationProperty Name="is_giris_cikis" Relationship="personeltakipsistemiModel.FK_is_giris_cikis_ToTable_1" FromRole="personel" ToRole="is_giris_cikis" />
+          <NavigationProperty Name="izinlers" Relationship="personeltakipsistemiModel.FK_izinler_ToTable_2" FromRole="personel" ToRole="izinler" />
+          <NavigationProperty Name="maas" Relationship="personeltakipsistemiModel.FK_maas_ToTable_1" FromRole="personel" ToRole="maa" />
+          <NavigationProperty Name="personel_puantaj" Relationship="personeltakipsistemiModel.FK_personel_puantaj_ToTable_1" FromRole="personel" ToRole="personel_puantaj" />
+          <NavigationProperty Name="personel_rol" Relationship="personeltakipsistemiModel.FK_personel_ToTable_2" FromRole="personel" ToRole="personel_rol" />
+          <NavigationProperty Name="yillik_maas_raporlari" Relationship="personeltakipsistemiModel.FK_yillik_maas_raporlari_ToTable_1" FromRole="personel" ToRole="yillik_maas_raporlari" />
+        </EntityType>
+        <EntityType Name="personel_puantaj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="ay_yil" Type="DateTime" Precision="0" />
+          <Property Name="brut_ucret" Type="Double" />
+          <Property Name="net_ucret" Type="Double" />
+          <Property Name="calisilan_gun" Type="Double" />
+          <Property Name="hafta_tatili" Type="Double" />
+          <Property Name="genel_tatil" Type="Double" />
+          <Property Name="ucretli_izin" Type="Double" />
+          <Property Name="ucretsiz_izin" Type="Double" />
+          <Property Name="sihhi_izin" Type="Double" />
+          <Property Name="yillik_izin" Type="Double" />
+          <Property Name="mazeretsiz_izin" Type="Double" />
+          <Property Name="ucret_gun" Type="Double" />
+          <Property Name="sigorta_gun" Type="Double" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_personel_puantaj_ToTable_1" FromRole="personel_puantaj" ToRole="personel" />
+          <NavigationProperty Name="puantaj_gunler" Relationship="personeltakipsistemiModel.FK_Table_ToTable_1" FromRole="personel_puantaj" ToRole="puantaj_gunler" />
+          <Property Name="sigorta_saat" Type="Double" />
+          <Property Name="fazla_mesai_saat" Type="Double" />
+        </EntityType>
+        <EntityType Name="personel_rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personels" Relationship="personeltakipsistemiModel.FK_personel_ToTable_2" FromRole="personel_rol" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="puantaj_gunler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_puantaj_id" Type="Int32" />
+          <Property Name="gun" Type="Int32" />
+          <Property Name="gun_pauntaj" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personel_puantaj" Relationship="personeltakipsistemiModel.FK_Table_ToTable_1" FromRole="puantaj_gunler" ToRole="personel_puantaj" />
+        </EntityType>
+        <EntityType Name="resmi_tatil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tur_id" Type="Int32" />
+          <Property Name="tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="resmi_tatil_tur" Relationship="personeltakipsistemiModel.FK_resmi_tatil_ToTable_1" FromRole="resmi_tatil" ToRole="resmi_tatil_tur" />
+        </EntityType>
+        <EntityType Name="resmi_tatil_tur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="resmi_tatil" Relationship="personeltakipsistemiModel.FK_resmi_tatil_ToTable_1" FromRole="resmi_tatil_tur" ToRole="resmi_tatil" />
+        </EntityType>
+        <EntityType Name="yillik_maas_raporlari">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personel_id" Type="Int32" />
+          <Property Name="yil" Type="DateTime" Precision="0" />
+          <Property Name="toplam_prim_gunu_sayisi" Type="Double" />
+          <Property Name="toplam_prim_saati" Type="Double" />
+          <Property Name="toplam_brut_ucret" Type="Double" />
+          <Property Name="toplam_brut_toplam" Type="Double" />
+          <Property Name="toplam_fazla_mesai" Type="Double" />
+          <Property Name="toplam_sair_odeme" Type="Double" />
+          <Property Name="toplam_vergi_matrahi" Type="Double" />
+          <Property Name="toplam_sigorta_matrahi" Type="Double" />
+          <Property Name="toplam_damga_vergisi" Type="Double" />
+          <Property Name="toplam_gelir_vergisi" Type="Double" />
+          <Property Name="toplam_asgari_gecim_indirimi" Type="Double" />
+          <Property Name="toplam_sigorta_kesintisi" Type="Double" />
+          <Property Name="toplam_issizlik_sigortasi_kesintisi" Type="Double" />
+          <Property Name="toplam_isveren_sgk_istisnasi" Type="Double" />
+          <Property Name="toplam_net_ucret" Type="Double" />
+          <Property Name="toplam_odenecek_ucret" Type="Double" />
+          <Property Name="sigorta_primi_isveren" Type="Double" />
+          <Property Name="issizlik_sigortasi_isveren" Type="Double" />
+          <Property Name="toplam_sgk_primi" Type="Double" />
+          <Property Name="odenecek_sgk_primi" Type="Double" />
+          <Property Name="odenecek_gelir_vergisi" Type="Double" />
+          <Property Name="odenecek_issizlik_sigorta_kesintisi" Type="Double" />
+          <Property Name="toplam1" Type="Double" />
+          <Property Name="toplam2" Type="Double" />
+          <Property Name="net_odenecek_sgk_primi" Type="Double" />
+          <NavigationProperty Name="personel" Relationship="personeltakipsistemiModel.FK_yillik_maas_raporlari_ToTable_1" FromRole="yillik_maas_raporlari" ToRole="personel" />
+        </EntityType>
+        <Association Name="FK_fazla_mesai_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.fazla_mesai" Role="fazla_mesai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="fazla_mesai">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_ToTable_1">
+          <End Type="personeltakipsistemiModel.gunler" Role="gunler" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gunler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="haftalik_izin_gun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_is_giris_cikis_ToTable">
+          <End Type="personeltakipsistemiModel.is_giris_cikis_tur" Role="is_giris_cikis_tur" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.is_giris_cikis" Role="is_giris_cikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="is_giris_cikis_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="is_giris_cikis">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_is_giris_cikis_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.is_giris_cikis" Role="is_giris_cikis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="is_giris_cikis">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_izinler_ToTable_1">
+          <End Type="personeltakipsistemiModel.izin_tur" Role="izin_tur" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.izinler" Role="izinler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="izin_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="izinler">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_izinler_ToTable_2">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.izinler" Role="izinler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="izinler">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_maas_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.maas" Role="maa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="maa">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_puantaj_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.personel_puantaj" Role="personel_puantaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personel_puantaj">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_ToTable_2">
+          <End Type="personeltakipsistemiModel.personel_rol" Role="personel_rol" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel_rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="rol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_yillik_maas_raporlari_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel" Role="personel" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.yillik_maas_raporlari" Role="yillik_maas_raporlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="yillik_maas_raporlari">
+              <PropertyRef Name="personel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToTable_1">
+          <End Type="personeltakipsistemiModel.personel_puantaj" Role="personel_puantaj" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.puantaj_gunler" Role="puantaj_gunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel_puantaj">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="puantaj_gunler">
+              <PropertyRef Name="personel_puantaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_resmi_tatil_ToTable_1">
+          <End Type="personeltakipsistemiModel.resmi_tatil_tur" Role="resmi_tatil_tur" Multiplicity="0..1" />
+          <End Type="personeltakipsistemiModel.resmi_tatil" Role="resmi_tatil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="resmi_tatil_tur">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="resmi_tatil">
+              <PropertyRef Name="tur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="personeltakipsistemiModelStoreContainer" CdmEntityContainer="personeltakipsistemiEntities">
+          <EntitySetMapping Name="fazla_mesai">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.fazla_mesai">
+              <MappingFragment StoreEntitySet="fazla_mesai">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="sure_saat" ColumnName="sure_saat" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gunlers">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.gunler">
+              <MappingFragment StoreEntitySet="gunler">
+                <ScalarProperty Name="gun" ColumnName="gun" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="is_giris_cikis">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.is_giris_cikis">
+              <MappingFragment StoreEntitySet="is_giris_cikis">
+                <ScalarProperty Name="dogrulama_resmi" ColumnName="dogrulama_resmi" />
+                <ScalarProperty Name="tarihsaat" ColumnName="tarihsaat" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="is_giris_cikis_tur">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.is_giris_cikis_tur">
+              <MappingFragment StoreEntitySet="is_giris_cikis_tur">
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="izin_tur">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.izin_tur">
+              <MappingFragment StoreEntitySet="izin_tur">
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="izinlers">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.izinler">
+              <MappingFragment StoreEntitySet="izinler">
+                <ScalarProperty Name="red_durumu" ColumnName="red_durumu" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="izinde_bul_adres" ColumnName="izinde_bul_adres" />
+                <ScalarProperty Name="yol_izni" ColumnName="yol_izni" />
+                <ScalarProperty Name="sure" ColumnName="sure" />
+                <ScalarProperty Name="ise_baslangic" ColumnName="ise_baslangic" />
+                <ScalarProperty Name="izin_bitis" ColumnName="izin_bitis" />
+                <ScalarProperty Name="izin_baslangic" ColumnName="izin_baslangic" />
+                <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+                <ScalarProperty Name="son_degisiklik" ColumnName="son_degisiklik" />
+                <ScalarProperty Name="onay_tarihi" ColumnName="onay_tarihi" />
+                <ScalarProperty Name="talep_tarihi" ColumnName="talep_tarihi" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maas">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.maas">
+              <MappingFragment StoreEntitySet="maas">
+                <ScalarProperty Name="odenecek_ucret" ColumnName="odenecek_ucret" />
+                <ScalarProperty Name="net_ucret" ColumnName="net_ucret" />
+                <ScalarProperty Name="isveren_sgk_istisnasi" ColumnName="isveren_sgk_istisnasi" />
+                <ScalarProperty Name="issizlik_sigortasi_kesintisi" ColumnName="issizlik_sigortasi_kesintisi" />
+                <ScalarProperty Name="sigorta_kesintisi" ColumnName="sigorta_kesintisi" />
+                <ScalarProperty Name="asgari_gecim_indirimi" ColumnName="asgari_gecim_indirimi" />
+                <ScalarProperty Name="gelir_vergisi" ColumnName="gelir_vergisi" />
+                <ScalarProperty Name="damga_vergisi" ColumnName="damga_vergisi" />
+                <ScalarProperty Name="sigorta_matrahi" ColumnName="sigorta_matrahi" />
+                <ScalarProperty Name="vergi_matrahi" ColumnName="vergi_matrahi" />
+                <ScalarProperty Name="sair_odeme" ColumnName="sair_odeme" />
+                <ScalarProperty Name="fazla_mesai" ColumnName="fazla_mesai" />
+                <ScalarProperty Name="brut_toplam" ColumnName="brut_toplam" />
+                <ScalarProperty Name="gun_brut_ucreti" ColumnName="gun_brut_ucreti" />
+                <ScalarProperty Name="prim_saati" ColumnName="prim_saati" />
+                <ScalarProperty Name="prim_gunu_sayisi" ColumnName="prim_gunu_sayisi" />
+                <ScalarProperty Name="ucret_gun_sayisi" ColumnName="ucret_gun_sayisi" />
+                <ScalarProperty Name="ay_yil" ColumnName="ay_yil" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="oranlarbordroes">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.oranlarbordro">
+              <MappingFragment StoreEntitySet="oranlarbordro">
+                <ScalarProperty Name="sgk_primi_toplam" ColumnName="sgk_primi_toplam" />
+                <ScalarProperty Name="sgk_primi_isveren_payi" ColumnName="sgk_primi_isveren_payi" />
+                <ScalarProperty Name="issizlik_sigortasi_isveren_payi" ColumnName="issizlik_sigortasi_isveren_payi" />
+                <ScalarProperty Name="isveren_sgk_istisnasi" ColumnName="isveren_sgk_istisnasi" />
+                <ScalarProperty Name="agi_cocuk_diger" ColumnName="agi_cocuk_diger" />
+                <ScalarProperty Name="agi_cocuk_3" ColumnName="agi_cocuk_3" />
+                <ScalarProperty Name="agi_cocuk_2" ColumnName="agi_cocuk_2" />
+                <ScalarProperty Name="agi_cocuk_1" ColumnName="agi_cocuk_1" />
+                <ScalarProperty Name="agi_esi" ColumnName="agi_esi" />
+                <ScalarProperty Name="agi_kendisi" ColumnName="agi_kendisi" />
+                <ScalarProperty Name="damga_vergisi" ColumnName="damga_vergisi" />
+                <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_4" ColumnName="kumulatif_gelir_vergisi_dilim_4" />
+                <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_3" ColumnName="kumulatif_gelir_vergisi_dilim_3" />
+                <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_2" ColumnName="kumulatif_gelir_vergisi_dilim_2" />
+                <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_1" ColumnName="kumulatif_gelir_vergisi_dilim_1" />
+                <ScalarProperty Name="issizlik_sigortasi_isci_payi" ColumnName="issizlik_sigortasi_isci_payi" />
+                <ScalarProperty Name="sgk_primi_isci_payi" ColumnName="sgk_primi_isci_payi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personels">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.personel">
+              <MappingFragment StoreEntitySet="personel">
+                <ScalarProperty Name="net_maas" ColumnName="net_maas" />
+                <ScalarProperty Name="brut_maas" ColumnName="brut_maas" />
+                <ScalarProperty Name="ResimVeri" ColumnName="ResimVeri" />
+                <ScalarProperty Name="DosyaIsmi" ColumnName="DosyaIsmi" />
+                <ScalarProperty Name="ResimBoyutu" ColumnName="ResimBoyutu" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="haftalik_izin_gun" ColumnName="haftalik_izin_gun" />
+                <ScalarProperty Name="vergi_no" ColumnName="vergi_no" />
+                <ScalarProperty Name="sira_no" ColumnName="sira_no" />
+                <ScalarProperty Name="aile_sira_no" ColumnName="aile_sira_no" />
+                <ScalarProperty Name="cilt_no" ColumnName="cilt_no" />
+                <ScalarProperty Name="nfs_kytli_mah_koy" ColumnName="nfs_kytli_mah_koy" />
+                <ScalarProperty Name="nfs_kayitli_ilce" ColumnName="nfs_kayitli_ilce" />
+                <ScalarProperty Name="nfs_kayitli_il" ColumnName="nfs_kayitli_il" />
+                <ScalarProperty Name="nufus_no" ColumnName="nufus_no" />
+                <ScalarProperty Name="nufus_seri_no" ColumnName="nufus_seri_no" />
+                <ScalarProperty Name="kan_grubu" ColumnName="kan_grubu" />
+                <ScalarProperty Name="adres_ilce" ColumnName="adres_ilce" />
+                <ScalarProperty Name="adres_il" ColumnName="adres_il" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="e_posta" ColumnName="e_posta" />
+                <ScalarProperty Name="cep_tel" ColumnName="cep_tel" />
+                <ScalarProperty Name="is_tel" ColumnName="is_tel" />
+                <ScalarProperty Name="ev_tel" ColumnName="ev_tel" />
+                <ScalarProperty Name="meslek" ColumnName="meslek" />
+                <ScalarProperty Name="tahsil" ColumnName="tahsil" />
+                <ScalarProperty Name="gorev" ColumnName="gorev" />
+                <ScalarProperty Name="departman" ColumnName="departman" />
+                <ScalarProperty Name="cocuk_sayisi" ColumnName="cocuk_sayisi" />
+                <ScalarProperty Name="medeni_hal" ColumnName="medeni_hal" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="ssk_no" ColumnName="ssk_no" />
+                <ScalarProperty Name="isten_cikis_tarihi" ColumnName="isten_cikis_tarihi" />
+                <ScalarProperty Name="ise_giris_tarihi" ColumnName="ise_giris_tarihi" />
+                <ScalarProperty Name="anne_adi" ColumnName="anne_adi" />
+                <ScalarProperty Name="baba_adi" ColumnName="baba_adi" />
+                <ScalarProperty Name="dogum_yeri" ColumnName="dogum_yeri" />
+                <ScalarProperty Name="dogum_tarihi" ColumnName="dogum_tarihi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="tc_kimlik_no" ColumnName="tc_kimlik_no" />
+                <ScalarProperty Name="ilk_soyad" ColumnName="ilk_soyad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel_puantaj">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.personel_puantaj">
+              <MappingFragment StoreEntitySet="personel_puantaj">
+                <ScalarProperty Name="fazla_mesai_saat" ColumnName="fazla_mesai_saat" />
+                <ScalarProperty Name="sigorta_saat" ColumnName="sigorta_saat" />
+                <ScalarProperty Name="sigorta_gun" ColumnName="sigorta_gun" />
+                <ScalarProperty Name="ucret_gun" ColumnName="ucret_gun" />
+                <ScalarProperty Name="mazeretsiz_izin" ColumnName="mazeretsiz_izin" />
+                <ScalarProperty Name="yillik_izin" ColumnName="yillik_izin" />
+                <ScalarProperty Name="sihhi_izin" ColumnName="sihhi_izin" />
+                <ScalarProperty Name="ucretsiz_izin" ColumnName="ucretsiz_izin" />
+                <ScalarProperty Name="ucretli_izin" ColumnName="ucretli_izin" />
+                <ScalarProperty Name="genel_tatil" ColumnName="genel_tatil" />
+                <ScalarProperty Name="hafta_tatili" ColumnName="hafta_tatili" />
+                <ScalarProperty Name="calisilan_gun" ColumnName="calisilan_gun" />
+                <ScalarProperty Name="net_ucret" ColumnName="net_ucret" />
+                <ScalarProperty Name="brut_ucret" ColumnName="brut_ucret" />
+                <ScalarProperty Name="ay_yil" ColumnName="ay_yil" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel_rol">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.personel_rol">
+              <MappingFragment StoreEntitySet="personel_rol">
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="puantaj_gunler">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.puantaj_gunler">
+              <MappingFragment StoreEntitySet="puantaj_gunler">
+                <ScalarProperty Name="gun_pauntaj" ColumnName="gun_pauntaj" />
+                <ScalarProperty Name="gun" ColumnName="gun" />
+                <ScalarProperty Name="personel_puantaj_id" ColumnName="personel_puantaj_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resmi_tatil">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.resmi_tatil">
+              <MappingFragment StoreEntitySet="resmi_tatil">
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resmi_tatil_tur">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.resmi_tatil_tur">
+              <MappingFragment StoreEntitySet="resmi_tatil_tur">
+                <ScalarProperty Name="tur" ColumnName="tur" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="yillik_maas_raporlari">
+            <EntityTypeMapping TypeName="personeltakipsistemiModel.yillik_maas_raporlari">
+              <MappingFragment StoreEntitySet="yillik_maas_raporlari">
+                <ScalarProperty Name="net_odenecek_sgk_primi" ColumnName="net_odenecek_sgk_primi" />
+                <ScalarProperty Name="toplam2" ColumnName="toplam2" />
+                <ScalarProperty Name="toplam1" ColumnName="toplam1" />
+                <ScalarProperty Name="odenecek_issizlik_sigorta_kesintisi" ColumnName="odenecek_issizlik_sigorta_kesintisi" />
+                <ScalarProperty Name="odenecek_gelir_vergisi" ColumnName="odenecek_gelir_vergisi" />
+                <ScalarProperty Name="odenecek_sgk_primi" ColumnName="odenecek_sgk_primi" />
+                <ScalarProperty Name="toplam_sgk_primi" ColumnName="toplam_sgk_primi" />
+                <ScalarProperty Name="issizlik_sigortasi_isveren" ColumnName="issizlik_sigortasi_isveren" />
+                <ScalarProperty Name="sigorta_primi_isveren" ColumnName="sigorta_primi_isveren" />
+                <ScalarProperty Name="toplam_odenecek_ucret" ColumnName="toplam_odenecek_ucret" />
+                <ScalarProperty Name="toplam_net_ucret" ColumnName="toplam_net_ucret" />
+                <ScalarProperty Name="toplam_isveren_sgk_istisnasi" ColumnName="toplam_isveren_sgk_istisnasi" />
+                <ScalarProperty Name="toplam_issizlik_sigortasi_kesintisi" ColumnName="toplam_issizlik_sigortasi_kesintisi" />
+                <ScalarProperty Name="toplam_sigorta_kesintisi" ColumnName="toplam_sigorta_kesintisi" />
+                <ScalarProperty Name="toplam_asgari_gecim_indirimi" ColumnName="toplam_asgari_gecim_indirimi" />
+                <ScalarProperty Name="toplam_gelir_vergisi" ColumnName="toplam_gelir_vergisi" />
+                <ScalarProperty Name="toplam_damga_vergisi" ColumnName="toplam_damga_vergisi" />
+                <ScalarProperty Name="toplam_sigorta_matrahi" ColumnName="toplam_sigorta_matrahi" />
+                <ScalarProperty Name="toplam_vergi_matrahi" ColumnName="toplam_vergi_matrahi" />
+                <ScalarProperty Name="toplam_sair_odeme" ColumnName="toplam_sair_odeme" />
+                <ScalarProperty Name="toplam_fazla_mesai" ColumnName="toplam_fazla_mesai" />
+                <ScalarProperty Name="toplam_brut_toplam" ColumnName="toplam_brut_toplam" />
+                <ScalarProperty Name="toplam_brut_ucret" ColumnName="toplam_brut_ucret" />
+                <ScalarProperty Name="toplam_prim_saati" ColumnName="toplam_prim_saati" />
+                <ScalarProperty Name="toplam_prim_gunu_sayisi" ColumnName="toplam_prim_gunu_sayisi" />
+                <ScalarProperty Name="yil" ColumnName="yil" />
+                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

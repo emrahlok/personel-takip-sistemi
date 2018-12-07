@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Çalışanlar";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var ViewModel = new Personel_Finansal_Takip.Areas.admin.Models.EmployeeViewModel();
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Personeller</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                        <input id="search" type="text" class="form-control" placeholder="Personel Ara" style="border-radius:17px;">
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12 form-group" style="width:auto;">
+                        <a href="@Url.Action("Create", "Employees")" class="btn btn-round btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span> Yeni Personel Ekle</a>
+                    </div>
+                </div>
+
+                @if (ViewModel.personeller.Count > 0)
+                {
+                    var calisan_personeller = ViewModel.personeller.Where(x => x.isten_cikis_tarihi == null).ToList();
+                    var isten_ayrilanlar = ViewModel.personeller.Where(x => x.isten_cikis_tarihi != null).ToList();
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab_content1" id="genelbilgiler-tab" role="tab" data-toggle="tab" aria-expanded="true">Aktif Personeller</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content2" role="tab" id="kisiselbilgiler-tab" data-toggle="tab" aria-expanded="false">İşten Ayrılan Personeller</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in form-horizontal" id="tab_content1" aria-labelledby="home-tab">
+                                        @if (calisan_personeller.Count > 0)
+                                        {
+                                            foreach (var personel in calisan_personeller)
+                                            {
+                                                <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
+                                                    <div class="well profile_view">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="brief"><i>@personel.meslek</i></h4>
+                                                            <div class="left col-xs-7">
+                                                                <h2>@personel.ad @personel.soyad</h2>
+                                                                <p><strong>Departman: </strong> @personel.departman </p>
+                                                                <ul class="list-unstyled">
+                                                                    <li><i class="fa fa-phone"></i> Telefon : @personel.cep_tel</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right col-xs-5 text-center">
+                                                                @if (personel.ResimVeri != null)
+                                                                {
+                                                                    <img src="@String.Format(" data:image/gif;base64,{0}", System.Text.Encoding.ASCII.GetString(personel.ResimVeri))" alt="" class="img-circle img-responsive" style="width:115.125px; height:115.125px;">
+                                                                }
+                                                                else
+                                                                {
+                                                                    switch (personel.cinsiyet)
+                                                                    {
+                                                                        case "Bay":
+                                                                            <img src="~/images/user_male_profile.png" alt="" class="img-circle img-responsive" style="width:115.125px; height:115.125px;">
+                                                                            break;
+                                                                        case "Bayan":
+                                                                            <img src="~/images/user_female_profile.png" alt="" class="img-circle img-responsive" style="width:115.125px; height:115.125px;">
+                                                                            break;
+                                                                        default:
+                                                                            break;
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 bottom text-center">
+                                                            <div class="col-xs-12 col-sm-6 emphasis">
+                                                                <a href="@Url.Action("Edit","Employees", new { personel_id = personel.id })" class="btn btn-primary btn-xs">
+                                                                    <i class="fa fa-edit">
+                                                                    </i> Düzenle
+                                                                </a>
+                                                                <a href="@Url.Action("Delete","Employees", new { personel_id = personel.id })" class="btn btn-danger btn-xs">
+                                                                    <i class="fa fa-eraser">
+                                                                    </i> Sil
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div>Aktif personel mevcut değil.</div>
+                                        }
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade form-horizontal" id="tab_content2" aria-labelledby="profile-tab">
+                                        @if (isten_ayrilanlar.Count > 0)
+                                        {
+                                            foreach (var personel in isten_ayrilanlar)
+                                            {
+                                                <div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
+                                                    <div class="well profile_view">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="brief"><i>@personel.meslek</i></h4>
+                                                            <div class="left col-xs-7">
+                                                                <h2>@personel.ad @personel.soyad</h2>
+                                                                <p><strong>Departman: </strong> @personel.departman </p>
+                                                                <ul class="list-unstyled">
+                                                                    <li><i class="fa fa-phone"></i> Telefon : @personel.cep_tel</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right col-xs-5 text-center">
+                                                                @if (personel.ResimVeri != null)
+                                                                {
+                                                                    <img src="@String.Format(" data:image/gif;base64,{0}", System.Text.Encoding.ASCII.GetString(personel.ResimVeri))" alt="" class="img-circle img-responsive" style="width:115.125px; height:115.125px;">
+                                                                }
+                                                                else
+                                                                {
+                                                                    switch (personel.cinsiyet)
+                                                                    {
+                                                                        case "Bay":
+                                                                            <img src="~/images/user_male_profile.png" alt="" class="img-circle img-responsive">
+                                                                            break;
+                                                                        case "Bayan":
+                                                                            <img src="~/images/user_female_profile.png" alt="" class="img-circle img-responsive">
+                                                                            break;
+                                                                        default:
+                                                                            break;
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 bottom text-center">
+                                                            <div class="col-xs-12 col-sm-6 emphasis">
+                                                                <a href="@Url.Action("Edit","Employees", new { personel_id = personel.id })" class="btn btn-primary btn-xs">
+                                                                    <i class="fa fa-edit">
+                                                                    </i> Düzenle
+                                                                </a>
+                                                                <a href="@Url.Action("Delete","Employees", new { personel_id = personel.id })" class="btn btn-danger btn-xs">
+                                                                    <i class="fa fa-eraser">
+                                                                    </i> Sil
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div>İşten ayrılan personel mevcut değil.</div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div>Çalışan yada işten ayrılmış personel mevcut değil.</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var personeller = document.getElementsByClassName('col-md-4 col-sm-4 col-xs-12 animated fadeInDown');
+        $('#search').keyup(function () {
+            var keyupData = this.value;
+            var pattern = RegExp(keyupData, 'i');
+            [].forEach.call(personeller, function (data) {
+                var dataInnerText = data.innerText;
+                if (pattern.test(dataInnerText)) {
+                    data.style.display = "";
+                } else {
+                    data.style.display = "none";
+                }
+                //if (dataInnerText.indexOf(keyupData) != -1) {
+                //    data.style.display = "";
+                //}
+                //else {
+                //    data.style.display = "none";
+                //}
+            });
+        });
+        //[].forEach.call(personeller, function (data) {
+        //    alert(data.innerText);
+        //});
+    </script>
+}

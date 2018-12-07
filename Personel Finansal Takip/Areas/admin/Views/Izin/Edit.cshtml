@@ -1,0 +1,296 @@
+﻿@model Personel_Finansal_Takip.Models.izinler
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>İzin</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.id)
+                            @Html.HiddenFor(model => model.son_degisiklik)
+                            @Html.HiddenFor(model => model.talep_tarihi)
+                            @Html.HiddenFor(model => model.onay_tarihi)
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Personel</label>
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("personel_id", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.personel_id, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">İzin Türü</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.DropDownList("tur_id", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.tur_id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İzin Başlangıç</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.izin_baslangic, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izin_baslangic, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">İzin Bitiş</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.EditorFor(model => model.izin_bitis, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izin_bitis, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İşe Başlangıç</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.ise_baslangic, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ise_baslangic, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Süre(Gün)</label>
+                                    <div class="col-md-2" style="width: 12%;">
+                                        @Html.EditorFor(model => model.sure, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.sure, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Yol İzni</label>
+                                    <div class="col-md-2" style="width: 12%;">
+                                        @Html.EditorFor(model => model.yol_izni, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.yol_izni, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İz. Bul. Adres</label>
+                                    <div class="col-md-4">
+                                        @Html.TextAreaFor(model => model.izinde_bul_adres, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izinde_bul_adres, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Açıklama</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.TextAreaFor(model => model.aciklama, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href="@Url.Action("Index", "Izin")" class="btn btn-default">Vazgeç</a>
+                                    @if ((!Model.red_durumu.HasValue && !Model.onay_tarihi.HasValue) || (!Model.red_durumu.Value && !Model.onay_tarihi.HasValue))
+                                    {
+                                        <button type="submit" class="btn btn-danger" formaction="@Url.Action("Red", "Izin")">Red</button>
+                                    }
+                                    @if (!Model.onay_tarihi.HasValue)
+                                    {
+                                        <button type="submit" class="btn btn-success" formaction="@Url.Action("Onayla", "Izin")">Onayla</button>
+                                    }
+                                    @if (Model.onay_tarihi.HasValue)
+                                    {
+                                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="izin_durum"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        //$('#izin_baslangic').keyup(function () {
+        //    alert(this.val());
+        //});
+        Date.prototype.yyyymmdd = function () {
+            var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
+        $('#izin_baslangic').change(function () {
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            var izbitval = $('#izin_bitis').val();
+            var izbitdate = new Date(izbitval);
+            if (izbitval != "") {
+                if (izbasdate > izbitdate) {
+                    $('#izin_bitis').val(izbasval);
+                }
+            }
+            else
+                $('#izin_bitis').val(izbasval);
+
+            izbitval = $('#izin_bitis').val();
+            izbitdate = new Date(izbitval);
+            var asdf = izbitdate - izbasdate;
+            var oneDay = 24 * 60 * 60 * 1000;
+            console.log(asdf / oneDay);
+            $('#sure').val((asdf / oneDay) + 1);
+            var isbasval = $('#ise_baslangic').val();
+            var isbasdate = new Date();
+            if (isbasval == "") {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+            else
+                isbasdate = new Date(isbasval);
+            if (izbitdate >= isbasdate) {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+        });
+        $('#izin_bitis').change(function () {
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            var izbitval = $('#izin_bitis').val();
+            var izbitdate = new Date(izbitval);
+            if (izbasval != "") {
+                if (izbasdate > izbitdate) {
+                    $('#izin_baslangic').val(izbitval);
+                }
+            }
+            else
+                $('#izin_baslangic').val(izbitval);
+
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            var asdf = izbitdate - izbasdate;
+            var oneDay = 24 * 60 * 60 * 1000;
+            console.log(asdf / oneDay);
+            $('#sure').val((asdf / oneDay) + 1);
+            var isbasval = $('#ise_baslangic').val();
+            var isbasdate = new Date();
+            if (isbasval == "") {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+            else
+                isbasdate = new Date(isbasval);
+            if (izbitdate >= isbasdate) {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+        });
+        $('#personel_id').change(function () {
+            var personel_id = $('#personel_id').val();
+            var url = '@Url.Action("GetIzinState", "Izin")';
+            $.post(url, {
+                personel_id: personel_id
+            },
+            function (data) {
+                $('#izin_durum').empty();
+                $('#izin_durum').append(data);
+                console.log("asdf", data);
+                //var e = document.getElementById("tur_id");
+                //var strUser = e.options[e.selectedIndex].text;
+                //var pattern = RegExp(strUser, 'i');
+                //[].forEach.call(states, function (data) {
+                //    if (pattern.test(data.stateTitle)) {
+                //        $('#sure').attr("min", "0");
+                //        $('#sure').attr("max", data.remain);
+                //        $('#sure').val(0);
+                //        $('#izin_baslangic').val("");
+                //        $('#izin_bitis').val("");
+                //        $('#ise_baslangic').val("");
+                //    }
+                //});
+                //progress_div.bPopup().close();
+                //tum_detaylar_div.empty();
+                //tum_detaylar_div.append(data);
+                //$('#tum_detaylar').bPopup({
+                //    modalClose: false
+                //});
+                //var restorepage = document.body.innerHTML;
+                //var printcontent = document.getElementById('popupcontent').innerHTML;
+                //document.body.innerHTML = printcontent;
+                //window.print();
+                //document.body.innerHTML = restorepage;
+                //$('#popup2').bPopup().close();
+            });
+        });
+        $('#sure').change(function () {
+            var sureValue = $('#sure').val();
+            console.log(sureValue);
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            if (izbasval == "") {
+                var currentDate = new Date();
+                $('#izin_baslangic').val(currentDate.yyyymmdd());
+                izbasval = $('#izin_baslangic').val();
+                izbasdate = new Date(izbasval);
+            }
+            var izbitdate = izbasdate;
+            if (sureValue > 0) {
+                sureValue = sureValue - 1;
+                izbitdate.setDate(izbitdate.getDate() + sureValue);
+                $('#izin_bitis').val(izbitdate.yyyymmdd());
+            }
+            else
+                $('#izin_bitis').val(izbasval);
+
+            var isbasval = $('#ise_baslangic').val();
+            var isbasdate = new Date();
+            if (isbasval == "") {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+            else
+                isbasdate = new Date(isbasval);
+            if (izbitdate >= isbasdate) {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+        });
+        $(document).ready(function () {
+            var personel_id = $('#personel_id').val();
+            var url = '@Url.Action("GetIzinState", "Izin")';
+            $.post(url, {
+                personel_id: personel_id
+            },
+            function (data) {
+                $('#izin_durum').empty();
+                $('#izin_durum').append(data);
+                console.log("partial", data);
+                console.log("states", states);
+                //var e = document.getElementById("tur_id");
+                //var strUser = e.options[e.selectedIndex].text;
+                //var pattern = RegExp(strUser, 'i');
+                //[].forEach.call(states, function (data) {
+                //    if (pattern.test(data.stateTitle)) {
+                //        //$('#sure').attr("min", "0");
+                //        //$('#sure').attr("max", data.remain);
+                //        //$('#sure').val(0);
+                //        //$('#izin_baslangic').val("");
+                //        //$('#izin_bitis').val("");
+                //        //$('#ise_baslangic').val("");
+                //    }
+                //});
+                //progress_div.bPopup().close();
+                //tum_detaylar_div.empty();
+                //tum_detaylar_div.append(data);
+                //$('#tum_detaylar').bPopup({
+                //    modalClose: false
+                //});
+                //var restorepage = document.body.innerHTML;
+                //var printcontent = document.getElementById('popupcontent').innerHTML;
+                //document.body.innerHTML = printcontent;
+                //window.print();
+                //document.body.innerHTML = restorepage;
+                //$('#popup2').bPopup().close();
+            });
+            $('#sure').attr("min", "1");
+        });
+    </script>
+}

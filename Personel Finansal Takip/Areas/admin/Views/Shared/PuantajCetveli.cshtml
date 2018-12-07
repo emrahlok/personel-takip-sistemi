@@ -1,0 +1,126 @@
+﻿@model Personel_Finansal_Takip.Models.personel_puantaj
+<div style="float:left;">
+    <div style="text-align:center"><strong>PERSONEL PUANTAJ CETVELİ</strong></div>
+    <div style="padding: 20px;">
+        <strong>FİRMA ÜNVANI</strong> : FİRMA ÜNVANI<br>
+        <strong>Adres</strong> : /
+    </div>
+    <table id="table1" border="1" style="width: 100%;">
+        <tr>
+            <td scope="col" rowspan="2">S.No</td>
+            <td scope="col" rowspan="2">Adı&nbsp;Soyadı</td>
+            <td scope="col" rowspan="2">
+                SGK&nbsp;Sicil&nbsp;No<br>
+                T.C.&nbsp;Kimlik&nbsp;No
+            </td>
+            <td scope="col" rowspan="2">
+                İşe&nbsp;Giriş&nbsp;Tar.<br>
+                İş.&nbsp;Çıkış&nbsp;Tar.
+            </td>
+            <td scope="col" colspan="@Model.puantaj_gunler.Count">@Html.DisplayFor(x => x.ay_yil)</td>
+            <td scope="col" rowspan="2">
+                Brüt&nbsp;Ücret<br>
+                Net&nbsp;Ücret
+            </td>
+            <td scope="col" rowspan="2">
+                Çal.<br>
+                Gn.
+            </td>
+            <td scope="col" rowspan="2">
+                Haf.<br>
+                Tatil
+            </td>
+            <td scope="col" rowspan="2">
+                Gen.<br>
+                Tatil
+            </td>
+            <td scope="col" rowspan="2">
+                Üc.li<br>
+                İzin
+            </td>
+            <td scope="col" rowspan="2">
+                Üc.siz<br>
+                İzin
+            </td>
+            <td scope="col" rowspan="2">
+                Sıhhi<br>
+                İzin
+            </td>
+            <td scope="col" rowspan="2">
+                Yıllık<br>
+                İzin
+            </td>
+            <td scope="col" rowspan="2">
+                Maz.<br>
+                İzin
+            </td>
+            <td scope="col" rowspan="2">
+                Ücret<br>
+                Gn.
+            </td>
+            <td scope="col" rowspan="2">
+                Sig.<br>
+                Gn.
+            </td>
+            <td scope="col" rowspan="2">İmza</td>
+        </tr>
+        <tr>
+            @foreach (var puantaj in Model.puantaj_gunler.ToList())
+            {
+                <td>@puantaj.gun</td>
+            }
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>
+                @Model.personel.ad<br />
+                @Model.personel.soyad
+            </td>
+            <td>
+                @Model.personel.ssk_no<br />
+                @Model.personel.tc_kimlik_no
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.personel.ise_giris_tarihi)<br />
+                @Html.DisplayFor(model => model.personel.isten_cikis_tarihi)
+            </td>
+            @foreach (var puantaj in Model.puantaj_gunler.ToList())
+            {
+                <td style="width: 20px; height: 20px;">@puantaj.gun_pauntaj</td>
+            }
+            <td>
+                @Html.DisplayFor(model => model.brut_ucret)<br />
+                @Html.DisplayFor(model => model.net_ucret)
+            </td>
+            <td>@Model.calisilan_gun</td>
+            <td>@Model.hafta_tatili</td>
+            <td>@Model.genel_tatil</td>
+            <td>@Model.ucretli_izin</td>
+            <td>@Model.ucretsiz_izin</td>
+            <td>@Model.sihhi_izin</td>
+            <td>@Model.yillik_izin</td>
+            <td>@Model.mazeretsiz_izin</td>
+            <td>@Model.ucret_gun</td>
+            <td>@Model.sigorta_gun</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    <table id="table2" style="margin-top:32px; width: 100%;">
+        <tr>
+            <td width="15%">M=Mazeretsiz&nbsp;Gelmediği&nbsp;Günler</td>
+            <td width="15%">B=Ulusal&nbsp;Bayram&nbsp;Günleri</td>
+            <td width="15%">Y=Yıllık&nbsp;İzinli&nbsp;Günler</td>
+            <td width="15%">Ü=Ücretli&nbsp;İzinli&nbsp;Günler</td>
+            <td width="15%">X=Sayılmayan&nbsp;Günler</td>
+            <td width="30%" style="text-align:center;">İŞVEREN&nbsp;-&nbsp;YETKİLİ</td>
+        </tr>
+        <tr>
+            <td width="15%">R=(Sıhhi&nbsp;İzinli)&nbsp;Raporlu&nbsp;Günler</td>
+            <td width="15%">D=Dini&nbsp;Bayram&nbsp;Günleri</td>
+            <td width="15%">T=Hafta&nbsp;Tatili/Resmi&nbsp;Tatil&nbsp;Günleri</td>
+            <td width="15%">N=(Normal)&nbsp;Çalıştığı&nbsp;Günler</td>
+            <td width="15%">Z=Ücretsiz&nbsp;İzinli&nbsp;Günler</td>
+            <td width="30%" style="text-align:center;">Adı&nbsp;Soyadı/Ünvanı/İmza/Kaşe</td>
+        </tr>
+    </table>
+</div>

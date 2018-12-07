@@ -1,0 +1,49 @@
+﻿@model Personel_Finansal_Takip.Models.fazla_mesai
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Fazla Mesai Düzenle</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12" style="width:auto;">Personel</label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.DropDownList("personel_id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.personel_id, "", new { @class = "text-danger" })
+                            </div>
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" style="width:auto;">Süre (Saat)</label>
+                            <div class="col-md-1 col-sm-1 col-xs-12">
+                                @Html.EditorFor(model => model.sure_saat, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.sure_saat, "", new { @class = "text-danger" })
+                            </div>
+                            <label class="control-label col-md-1 col-sm-1 col-xs-12" style="width:auto;">Tarih</label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                @Html.EditorFor(model => model.tarih, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.tarih, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="@Url.Action("Index", "FazlaMesai")" class="btn btn-default">Vazgeç</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

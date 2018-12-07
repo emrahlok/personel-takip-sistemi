@@ -1,0 +1,285 @@
+﻿@model Personel_Finansal_Takip.Areas.employee.Models.IzinViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/employee/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>İzin Durumum</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    @foreach (var states in Model.izinState.izinStates)
+                    {
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="width: 33%;">
+                            <div class="x_title" style="border: 2px solid #E6E9ED;">
+                                @states.stateTitle
+                                <div class="progress" style="margin-bottom: 0;">
+                                    @if (states.percentage >= 0 && states.percentage <= 25)
+                                    {
+                                        <div class="progress-bar progress-bar-success" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 26 && states.percentage <= 50)
+                                    {
+                                        <div class="progress-bar progress-bar-info" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 51 && states.percentage <= 75)
+                                    {
+                                        <div class="progress-bar progress-bar-warning" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 76 && states.percentage <= 100)
+                                    {
+                                        <div class="progress-bar progress-bar-danger" style="width: @states.statePercentage;"></div>
+                                    }
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    @{
+                        var izin_talebi = Model.pIzinler.Where(x => !x.onay_tarihi.HasValue && !x.red_durumu.Value).ToList();
+                        var onaylanan_izinler = Model.pIzinler.Where(x => x.onay_tarihi.HasValue).ToList();
+                        var red_izinler = Model.pIzinler.Where(x => x.red_durumu.Value).ToList();
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#tab_content1" id="onaylanan-tab" role="tab" data-toggle="tab" aria-expanded="true">İzinler</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content2" role="tab" id="talep-tab" data-toggle="tab" aria-expanded="false">Onay Bekleyen İzinler</a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#tab_content3" role="tab" id="red-tab" data-toggle="tab" aria-expanded="false">Reddedilen İzinler</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade active in form-horizontal" id="tab_content1" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <table id="datatable" class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Adı Soyadı</th>
+                                                        <th>İzin Türü</th>
+                                                        <th>İzin Başlangıç</th>
+                                                        <th>İzin Bitiş</th>
+                                                        <th>İşe Başlangıç</th>
+                                                        <th>Süre (Gün)</th>
+                                                        <th>Yol İzni (Gün)</th>
+                                                        <th>Talep</th>
+                                                        <th>Son Değişiklik</th>
+                                                        <th>Onay</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    @foreach (var izin in onaylanan_izinler)
+                                                    {
+                                                        <tr>
+                                                            <td>@izin.personel.ad @izin.personel.soyad</td>
+                                                            <td>@izin.izin_tur.tur</td>
+                                                            <td>@izin.izin_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.izin_bitis.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.ise_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.sure</td>
+                                                            <td>@izin.yol_izni</td>
+                                                            <td>@izin.talep_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")</td>
+                                                            <td>@izin.son_degisiklik.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")</td>
+                                                            <td>@izin.onay_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade form-horizontal" id="tab_content2" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <table id="datatable3" class="table table-striped table-bordered" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Adı Soyadı</th>
+                                                        <th>İzin Türü</th>
+                                                        <th>İzin Başlangıç</th>
+                                                        <th>İzin Bitiş</th>
+                                                        <th>İşe Başlangıç</th>
+                                                        <th>Süre (Gün)</th>
+                                                        <th>Yol İzni (Gün)</th>
+                                                        <th>Talep</th>
+                                                        <th>Son Değişiklik</th>
+                                                        <th>Onay</th>
+                                                        <th>İşlem</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    @foreach (var izin in izin_talebi)
+                                                    {
+                                                        <tr>
+                                                            <td>@izin.personel.ad @izin.personel.soyad</td>
+                                                            <td>@izin.izin_tur.tur</td>
+                                                            <td>@izin.izin_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.izin_bitis.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.ise_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.sure</td>
+                                                            <td>@izin.yol_izni</td>
+                                                            <td>
+                                                                @if (izin.talep_tarihi.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.talep_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.son_degisiklik.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.son_degisiklik.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.onay_tarihi.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.onay_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.izin_baslangic.Value.Date > DateTime.Now.Date)
+                                                                {
+                                                                    <a href="@Url.Action("Edit","Izin", new { id = izin.id })" class="btn btn-primary btn-xs">
+                                                                        <i class="fa fa-edit">
+                                                                        </i> Düzenle
+                                                                    </a>
+                                                                }
+                                                                <a href="@Url.Action("Delete","Izin", new { id = izin.id })" class="btn btn-danger btn-xs">
+                                                                    <i class="fa fa-eraser">
+                                                                    </i> Sil
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade form-horizontal" id="tab_content3" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <table id="datatable2" class="table table-striped table-bordered" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Adı Soyadı</th>
+                                                        <th>İzin Türü</th>
+                                                        <th>İzin Başlangıç</th>
+                                                        <th>İzin Bitiş</th>
+                                                        <th>İşe Başlangıç</th>
+                                                        <th>Süre (Gün)</th>
+                                                        <th>Yol İzni (Gün)</th>
+                                                        <th>Talep</th>
+                                                        <th>Son Değişiklik</th>
+                                                        <th>Onay</th>
+                                                        <th>İşlem</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    @foreach (var izin in red_izinler)
+                                                    {
+                                                        <tr>
+                                                            <td>@izin.personel.ad @izin.personel.soyad</td>
+                                                            <td>@izin.izin_tur.tur</td>
+                                                            <td>@izin.izin_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.izin_bitis.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.ise_baslangic.Value.ToString("yyyy\\/MM\\/dd")</td>
+                                                            <td>@izin.sure</td>
+                                                            <td>@izin.yol_izni</td>
+                                                            <td>
+                                                                @if (izin.talep_tarihi.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.talep_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.son_degisiklik.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.son_degisiklik.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.onay_tarihi.HasValue)
+                                                                {
+                                                                    <div>
+                                                                        @izin.onay_tarihi.Value.ToString("yyyy\\/MM\\/dd hh:mm:ss")
+                                                                    </div>
+                                                                }
+                                                            </td>
+                                                            <td>
+                                                                @if (izin.izin_baslangic.Value.Date > DateTime.Now.Date)
+                                                                {
+                                                                    <a href="@Url.Action("Edit","Izin", new { id = izin.id })" class="btn btn-primary btn-xs">
+                                                                        <i class="fa fa-edit">
+                                                                        </i> Düzenle
+                                                                    </a>
+                                                                }
+                                                                <a href="@Url.Action("Delete","Izin", new { id = izin.id })" class="btn btn-danger btn-xs">
+                                                                    <i class="fa fa-eraser">
+                                                                    </i> Sil
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <link href="~/js/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/js/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/js/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/js/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/js/datatables/buttons.bootstrap.min.js"></script>
+    <script src="~/js/datatables/jszip.min.js"></script>
+    <script src="~/js/datatables/pdfmake.min.js"></script>
+    <script src="~/js/datatables/vfs_fonts.js"></script>
+    <script src="~/js/datatables/buttons.html5.min.js"></script>
+    <script src="~/js/datatables/buttons.print.min.js"></script>
+    <script src="~/js/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/js/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/js/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/js/datatables/responsive.bootstrap.min.js"></script>
+    <script src="~/js/datatables/dataTables.scroller.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+            $('#datatable2').dataTable();
+            $('#datatable3').dataTable();
+        });
+    </script>
+}

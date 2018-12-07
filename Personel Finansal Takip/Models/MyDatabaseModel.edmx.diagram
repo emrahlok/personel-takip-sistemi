@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8dd808efea96493986b07e1590132e19" Name="Diagram1">
+        <EntityTypeShape EntityType="personeltakipsistemiModel.fazla_mesai" Width="1.5" PointX="5.25" PointY="6.25" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.gunler" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.is_giris_cikis" Width="1.5" PointX="5.25" PointY="18.125" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.is_giris_cikis_tur" Width="1.5" PointX="3" PointY="23.5" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.izin_tur" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.izinler" Width="1.5" PointX="8.25" PointY="14.25" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.maas" Width="1.5" PointX="5.25" PointY="12" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.oranlarbordro" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.personel" Width="1.5" PointX="3" PointY="10.625" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.personel_puantaj" Width="1.5" PointX="5.25" PointY="22.75" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.personel_rol" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.puantaj_gunler" Width="1.5" PointX="7.5" PointY="23.875" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.resmi_tatil" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.resmi_tatil_tur" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="personeltakipsistemiModel.yillik_maas_raporlari" Width="1.5" PointX="5.25" PointY="27.75" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_fazla_mesai_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_personel_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_is_giris_cikis_ToTable" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_is_giris_cikis_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_izinler_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_izinler_ToTable_2" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_maas_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_personel_puantaj_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_personel_ToTable_2" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_yillik_maas_raporlari_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_Table_ToTable_1" />
+        <AssociationConnector Association="personeltakipsistemiModel.FK_resmi_tatil_ToTable_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

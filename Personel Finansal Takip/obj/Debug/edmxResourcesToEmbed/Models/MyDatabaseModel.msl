@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="personeltakipsistemiModelStoreContainer" CdmEntityContainer="personeltakipsistemiEntities">
+    <EntitySetMapping Name="fazla_mesai">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.fazla_mesai">
+        <MappingFragment StoreEntitySet="fazla_mesai">
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="sure_saat" ColumnName="sure_saat" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gunlers">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.gunler">
+        <MappingFragment StoreEntitySet="gunler">
+          <ScalarProperty Name="gun" ColumnName="gun" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="is_giris_cikis">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.is_giris_cikis">
+        <MappingFragment StoreEntitySet="is_giris_cikis">
+          <ScalarProperty Name="dogrulama_resmi" ColumnName="dogrulama_resmi" />
+          <ScalarProperty Name="tarihsaat" ColumnName="tarihsaat" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="is_giris_cikis_tur">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.is_giris_cikis_tur">
+        <MappingFragment StoreEntitySet="is_giris_cikis_tur">
+          <ScalarProperty Name="tur" ColumnName="tur" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="izin_tur">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.izin_tur">
+        <MappingFragment StoreEntitySet="izin_tur">
+          <ScalarProperty Name="tur" ColumnName="tur" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="izinlers">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.izinler">
+        <MappingFragment StoreEntitySet="izinler">
+          <ScalarProperty Name="red_durumu" ColumnName="red_durumu" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="izinde_bul_adres" ColumnName="izinde_bul_adres" />
+          <ScalarProperty Name="yol_izni" ColumnName="yol_izni" />
+          <ScalarProperty Name="sure" ColumnName="sure" />
+          <ScalarProperty Name="ise_baslangic" ColumnName="ise_baslangic" />
+          <ScalarProperty Name="izin_bitis" ColumnName="izin_bitis" />
+          <ScalarProperty Name="izin_baslangic" ColumnName="izin_baslangic" />
+          <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+          <ScalarProperty Name="son_degisiklik" ColumnName="son_degisiklik" />
+          <ScalarProperty Name="onay_tarihi" ColumnName="onay_tarihi" />
+          <ScalarProperty Name="talep_tarihi" ColumnName="talep_tarihi" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="maas">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.maas">
+        <MappingFragment StoreEntitySet="maas">
+          <ScalarProperty Name="odenecek_ucret" ColumnName="odenecek_ucret" />
+          <ScalarProperty Name="net_ucret" ColumnName="net_ucret" />
+          <ScalarProperty Name="isveren_sgk_istisnasi" ColumnName="isveren_sgk_istisnasi" />
+          <ScalarProperty Name="issizlik_sigortasi_kesintisi" ColumnName="issizlik_sigortasi_kesintisi" />
+          <ScalarProperty Name="sigorta_kesintisi" ColumnName="sigorta_kesintisi" />
+          <ScalarProperty Name="asgari_gecim_indirimi" ColumnName="asgari_gecim_indirimi" />
+          <ScalarProperty Name="gelir_vergisi" ColumnName="gelir_vergisi" />
+          <ScalarProperty Name="damga_vergisi" ColumnName="damga_vergisi" />
+          <ScalarProperty Name="sigorta_matrahi" ColumnName="sigorta_matrahi" />
+          <ScalarProperty Name="vergi_matrahi" ColumnName="vergi_matrahi" />
+          <ScalarProperty Name="sair_odeme" ColumnName="sair_odeme" />
+          <ScalarProperty Name="fazla_mesai" ColumnName="fazla_mesai" />
+          <ScalarProperty Name="brut_toplam" ColumnName="brut_toplam" />
+          <ScalarProperty Name="gun_brut_ucreti" ColumnName="gun_brut_ucreti" />
+          <ScalarProperty Name="prim_saati" ColumnName="prim_saati" />
+          <ScalarProperty Name="prim_gunu_sayisi" ColumnName="prim_gunu_sayisi" />
+          <ScalarProperty Name="ucret_gun_sayisi" ColumnName="ucret_gun_sayisi" />
+          <ScalarProperty Name="ay_yil" ColumnName="ay_yil" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oranlarbordroes">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.oranlarbordro">
+        <MappingFragment StoreEntitySet="oranlarbordro">
+          <ScalarProperty Name="sgk_primi_toplam" ColumnName="sgk_primi_toplam" />
+          <ScalarProperty Name="sgk_primi_isveren_payi" ColumnName="sgk_primi_isveren_payi" />
+          <ScalarProperty Name="issizlik_sigortasi_isveren_payi" ColumnName="issizlik_sigortasi_isveren_payi" />
+          <ScalarProperty Name="isveren_sgk_istisnasi" ColumnName="isveren_sgk_istisnasi" />
+          <ScalarProperty Name="agi_cocuk_diger" ColumnName="agi_cocuk_diger" />
+          <ScalarProperty Name="agi_cocuk_3" ColumnName="agi_cocuk_3" />
+          <ScalarProperty Name="agi_cocuk_2" ColumnName="agi_cocuk_2" />
+          <ScalarProperty Name="agi_cocuk_1" ColumnName="agi_cocuk_1" />
+          <ScalarProperty Name="agi_esi" ColumnName="agi_esi" />
+          <ScalarProperty Name="agi_kendisi" ColumnName="agi_kendisi" />
+          <ScalarProperty Name="damga_vergisi" ColumnName="damga_vergisi" />
+          <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_4" ColumnName="kumulatif_gelir_vergisi_dilim_4" />
+          <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_3" ColumnName="kumulatif_gelir_vergisi_dilim_3" />
+          <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_2" ColumnName="kumulatif_gelir_vergisi_dilim_2" />
+          <ScalarProperty Name="kumulatif_gelir_vergisi_dilim_1" ColumnName="kumulatif_gelir_vergisi_dilim_1" />
+          <ScalarProperty Name="issizlik_sigortasi_isci_payi" ColumnName="issizlik_sigortasi_isci_payi" />
+          <ScalarProperty Name="sgk_primi_isci_payi" ColumnName="sgk_primi_isci_payi" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personels">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.personel">
+        <MappingFragment StoreEntitySet="personel">
+          <ScalarProperty Name="net_maas" ColumnName="net_maas" />
+          <ScalarProperty Name="brut_maas" ColumnName="brut_maas" />
+          <ScalarProperty Name="ResimVeri" ColumnName="ResimVeri" />
+          <ScalarProperty Name="DosyaIsmi" ColumnName="DosyaIsmi" />
+          <ScalarProperty Name="ResimBoyutu" ColumnName="ResimBoyutu" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="haftalik_izin_gun" ColumnName="haftalik_izin_gun" />
+          <ScalarProperty Name="vergi_no" ColumnName="vergi_no" />
+          <ScalarProperty Name="sira_no" ColumnName="sira_no" />
+          <ScalarProperty Name="aile_sira_no" ColumnName="aile_sira_no" />
+          <ScalarProperty Name="cilt_no" ColumnName="cilt_no" />
+          <ScalarProperty Name="nfs_kytli_mah_koy" ColumnName="nfs_kytli_mah_koy" />
+          <ScalarProperty Name="nfs_kayitli_ilce" ColumnName="nfs_kayitli_ilce" />
+          <ScalarProperty Name="nfs_kayitli_il" ColumnName="nfs_kayitli_il" />
+          <ScalarProperty Name="nufus_no" ColumnName="nufus_no" />
+          <ScalarProperty Name="nufus_seri_no" ColumnName="nufus_seri_no" />
+          <ScalarProperty Name="kan_grubu" ColumnName="kan_grubu" />
+          <ScalarProperty Name="adres_ilce" ColumnName="adres_ilce" />
+          <ScalarProperty Name="adres_il" ColumnName="adres_il" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="e_posta" ColumnName="e_posta" />
+          <ScalarProperty Name="cep_tel" ColumnName="cep_tel" />
+          <ScalarProperty Name="is_tel" ColumnName="is_tel" />
+          <ScalarProperty Name="ev_tel" ColumnName="ev_tel" />
+          <ScalarProperty Name="meslek" ColumnName="meslek" />
+          <ScalarProperty Name="tahsil" ColumnName="tahsil" />
+          <ScalarProperty Name="gorev" ColumnName="gorev" />
+          <ScalarProperty Name="departman" ColumnName="departman" />
+          <ScalarProperty Name="cocuk_sayisi" ColumnName="cocuk_sayisi" />
+          <ScalarProperty Name="medeni_hal" ColumnName="medeni_hal" />
+          <ScalarProperty Name="statu" ColumnName="statu" />
+          <ScalarProperty Name="ssk_no" ColumnName="ssk_no" />
+          <ScalarProperty Name="isten_cikis_tarihi" ColumnName="isten_cikis_tarihi" />
+          <ScalarProperty Name="ise_giris_tarihi" ColumnName="ise_giris_tarihi" />
+          <ScalarProperty Name="anne_adi" ColumnName="anne_adi" />
+          <ScalarProperty Name="baba_adi" ColumnName="baba_adi" />
+          <ScalarProperty Name="dogum_yeri" ColumnName="dogum_yeri" />
+          <ScalarProperty Name="dogum_tarihi" ColumnName="dogum_tarihi" />
+          <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+          <ScalarProperty Name="tc_kimlik_no" ColumnName="tc_kimlik_no" />
+          <ScalarProperty Name="ilk_soyad" ColumnName="ilk_soyad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel_puantaj">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.personel_puantaj">
+        <MappingFragment StoreEntitySet="personel_puantaj">
+          <ScalarProperty Name="fazla_mesai_saat" ColumnName="fazla_mesai_saat" />
+          <ScalarProperty Name="sigorta_saat" ColumnName="sigorta_saat" />
+          <ScalarProperty Name="sigorta_gun" ColumnName="sigorta_gun" />
+          <ScalarProperty Name="ucret_gun" ColumnName="ucret_gun" />
+          <ScalarProperty Name="mazeretsiz_izin" ColumnName="mazeretsiz_izin" />
+          <ScalarProperty Name="yillik_izin" ColumnName="yillik_izin" />
+          <ScalarProperty Name="sihhi_izin" ColumnName="sihhi_izin" />
+          <ScalarProperty Name="ucretsiz_izin" ColumnName="ucretsiz_izin" />
+          <ScalarProperty Name="ucretli_izin" ColumnName="ucretli_izin" />
+          <ScalarProperty Name="genel_tatil" ColumnName="genel_tatil" />
+          <ScalarProperty Name="hafta_tatili" ColumnName="hafta_tatili" />
+          <ScalarProperty Name="calisilan_gun" ColumnName="calisilan_gun" />
+          <ScalarProperty Name="net_ucret" ColumnName="net_ucret" />
+          <ScalarProperty Name="brut_ucret" ColumnName="brut_ucret" />
+          <ScalarProperty Name="ay_yil" ColumnName="ay_yil" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel_rol">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.personel_rol">
+        <MappingFragment StoreEntitySet="personel_rol">
+          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puantaj_gunler">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.puantaj_gunler">
+        <MappingFragment StoreEntitySet="puantaj_gunler">
+          <ScalarProperty Name="gun_pauntaj" ColumnName="gun_pauntaj" />
+          <ScalarProperty Name="gun" ColumnName="gun" />
+          <ScalarProperty Name="personel_puantaj_id" ColumnName="personel_puantaj_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resmi_tatil">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.resmi_tatil">
+        <MappingFragment StoreEntitySet="resmi_tatil">
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+          <ScalarProperty Name="tur_id" ColumnName="tur_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resmi_tatil_tur">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.resmi_tatil_tur">
+        <MappingFragment StoreEntitySet="resmi_tatil_tur">
+          <ScalarProperty Name="tur" ColumnName="tur" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="yillik_maas_raporlari">
+      <EntityTypeMapping TypeName="personeltakipsistemiModel.yillik_maas_raporlari">
+        <MappingFragment StoreEntitySet="yillik_maas_raporlari">
+          <ScalarProperty Name="net_odenecek_sgk_primi" ColumnName="net_odenecek_sgk_primi" />
+          <ScalarProperty Name="toplam2" ColumnName="toplam2" />
+          <ScalarProperty Name="toplam1" ColumnName="toplam1" />
+          <ScalarProperty Name="odenecek_issizlik_sigorta_kesintisi" ColumnName="odenecek_issizlik_sigorta_kesintisi" />
+          <ScalarProperty Name="odenecek_gelir_vergisi" ColumnName="odenecek_gelir_vergisi" />
+          <ScalarProperty Name="odenecek_sgk_primi" ColumnName="odenecek_sgk_primi" />
+          <ScalarProperty Name="toplam_sgk_primi" ColumnName="toplam_sgk_primi" />
+          <ScalarProperty Name="issizlik_sigortasi_isveren" ColumnName="issizlik_sigortasi_isveren" />
+          <ScalarProperty Name="sigorta_primi_isveren" ColumnName="sigorta_primi_isveren" />
+          <ScalarProperty Name="toplam_odenecek_ucret" ColumnName="toplam_odenecek_ucret" />
+          <ScalarProperty Name="toplam_net_ucret" ColumnName="toplam_net_ucret" />
+          <ScalarProperty Name="toplam_isveren_sgk_istisnasi" ColumnName="toplam_isveren_sgk_istisnasi" />
+          <ScalarProperty Name="toplam_issizlik_sigortasi_kesintisi" ColumnName="toplam_issizlik_sigortasi_kesintisi" />
+          <ScalarProperty Name="toplam_sigorta_kesintisi" ColumnName="toplam_sigorta_kesintisi" />
+          <ScalarProperty Name="toplam_asgari_gecim_indirimi" ColumnName="toplam_asgari_gecim_indirimi" />
+          <ScalarProperty Name="toplam_gelir_vergisi" ColumnName="toplam_gelir_vergisi" />
+          <ScalarProperty Name="toplam_damga_vergisi" ColumnName="toplam_damga_vergisi" />
+          <ScalarProperty Name="toplam_sigorta_matrahi" ColumnName="toplam_sigorta_matrahi" />
+          <ScalarProperty Name="toplam_vergi_matrahi" ColumnName="toplam_vergi_matrahi" />
+          <ScalarProperty Name="toplam_sair_odeme" ColumnName="toplam_sair_odeme" />
+          <ScalarProperty Name="toplam_fazla_mesai" ColumnName="toplam_fazla_mesai" />
+          <ScalarProperty Name="toplam_brut_toplam" ColumnName="toplam_brut_toplam" />
+          <ScalarProperty Name="toplam_brut_ucret" ColumnName="toplam_brut_ucret" />
+          <ScalarProperty Name="toplam_prim_saati" ColumnName="toplam_prim_saati" />
+          <ScalarProperty Name="toplam_prim_gunu_sayisi" ColumnName="toplam_prim_gunu_sayisi" />
+          <ScalarProperty Name="yil" ColumnName="yil" />
+          <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

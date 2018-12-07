@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    var ViewModel = new Personel_Finansal_Takip.Areas.admin.Models.AdminHomeViewModel();
+}
+
+<div class="row">
+    <!-- pie chart -->
+    <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <i class="fa fa-pie-chart"></i> <label>Departman Dağılımı</label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content2">
+                <div id="graph_donut" style="width:100%; height:250px;"></div>
+                Toplam @ViewModel.employee_count çalışan mevcut
+            </div>
+        </div>
+    </div>
+    <!-- /Pie chart -->
+    <div class="col-md-3 col-sm-3 col-xs-6" style="width:auto;">
+        <div class="x_panel">
+            <div class="x_title">
+                <i class="fa fa-flag"></i> <label>Yaklaşan Resmi Tatiller</label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content2">
+                @if (ViewModel.yaklasan_resmi_tatiller.Count() > 0)
+                {
+                    foreach (var resmi_tatil in ViewModel.yaklasan_resmi_tatiller)
+                    {
+                        <i class="fa fa-caret-right"></i>
+                        <label>
+                            @resmi_tatil.resmi_tatil_tur.tur (@resmi_tatil.tarih.Value.ToString("d MMMM yyyy"))
+                        </label>
+                        <br />
+                    }
+                }
+                else
+                {
+                    <label>Yaklaşan herhangi bir resmi tatil mevcut değil</label>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-6" style="width:auto;">
+        <div class="x_panel">
+            <div class="x_title">
+                <i class="fa fa-plane"></i> <label>Yaklaşan İzinler</label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content2">
+                @if (ViewModel.yaklasan_izinler.Count() > 0)
+                {
+                    foreach (var izin in ViewModel.yaklasan_izinler)
+                    {
+                        <i class="fa fa-caret-right"></i>
+                        <label>
+                            @izin.personel.ad @izin.personel.soyad (@izin.izin_baslangic.Value.ToString("d MMMM") - @izin.izin_bitis.Value.ToString("d MMMM yyyy"))
+                        </label>
+                        <br />
+                    }
+                }
+                else
+                {
+                    <label>Yaklaşan herhangi bir izin mevcut değil</label>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-6" style="width:auto;">
+        <div class="x_panel">
+            <div class="x_title">
+                <i class="fa fa-birthday-cake"></i> <label>Yaklaşan Doğum Günleri</label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content2">
+                @if (ViewModel.yaklasan_dogum_gunu.Count() > 0)
+                {
+                    foreach (var dogum_gunu in ViewModel.yaklasan_dogum_gunu)
+                    {
+                        <i class="fa fa-caret-right"></i>
+                        <label>
+                            @dogum_gunu.ad @dogum_gunu.soyad (@dogum_gunu.dogum_tarihi.Value.ToString("d MMMM"))
+                        </label>
+                        <br />
+                    }
+                }
+                else
+                {
+                    <label>Yaklaşan herhangi bir doğum günü mevcut değil</label>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <!-- moris js -->
+    <script src="~/js/moris/raphael-min.js"></script>
+    <script src="~/js/moris/morris.min.js"></script>
+    <script>
+        $(function () {
+            Morris.Donut({
+                element: 'graph_donut',
+                data: @Html.Raw(Json.Encode(ViewModel.departments)),
+                colors: @Html.Raw(Json.Encode(ViewModel.colors)),
+                formatter: function (y) {
+                    return y
+                }
+            });
+        });
+    </script>
+}

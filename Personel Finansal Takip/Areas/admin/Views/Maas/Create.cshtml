@@ -1,0 +1,44 @@
+﻿@model Personel_Finansal_Takip.Areas.admin.Models.MaasCreateModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Maas Ödemesi Ekle</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row form-horizontal">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.personel_id, "Personel", htmlAttributes: new { @class = "control-label col-md-1 col-sm-1 col-xs-12" })
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.DropDownList("personel_id", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(x => x.ay, "Ay", htmlAttributes: new { @class = "control-label col-md-1 col-sm-1 col-xs-12" })
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                @Html.DropDownListFor(x => x.ay, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Ay", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(x => x.yil, "Yıl", htmlAttributes: new { @class = "control-label col-md-1 col-sm-1 col-xs-12" })
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                @Html.DropDownListFor(x => x.yil, Enumerable.Range(1900, 200).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Yıl", htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="@Url.Action("Index", "Maas")" class="btn btn-default">Vazgeç</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

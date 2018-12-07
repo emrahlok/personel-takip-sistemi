@@ -1,0 +1,445 @@
+﻿@model Personel_Finansal_Takip.Models.personel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/employee/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Sisteme Kayıtlı Bilgilerim</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                        <div class="profile_img">
+                            <div class="avatar-view">
+                                @if (Model.ResimVeri != null)
+                                {
+                                    <img id="EmployeePhoto" src="@String.Format(" data:image/gif;base64,{0}", System.Text.Encoding.ASCII.GetString(Model.ResimVeri))"
+                                         alt="Avatar" style="width:220px; height:220px;" />
+                                }
+                                else
+                                {
+                                    switch (Model.cinsiyet)
+                                    {
+                                        case "Bay":
+                                            <img id="EmployeePhoto" src="~/images/user_male_profile.png" alt="Avatar" style="width:220px; height:220px;" />
+                                            break;
+                                        case "Bayan":
+                                            <img id="EmployeePhoto" src="~/images/user_female_profile.png" alt="Avatar" style="width:220px; height:220px;" />
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <h3>
+                            <label id="sol_ad">@Html.DisplayFor(model => model.ad)</label>
+                            <label id="sol_soyad">@Html.DisplayFor(model => model.soyad)</label>
+                        </h3>
+                        <ul class="list-unstyled user_data">
+                            <li>
+                                <i class="fa fa-briefcase user-profile-icon"></i>
+                                <label id="sol_meslek">@Html.DisplayFor(model => model.meslek)</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#tab_content1" id="genelbilgiler-tab" role="tab" data-toggle="tab" aria-expanded="true">Genel Bilgiler</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#tab_content2" role="tab" id="kisiselbilgiler-tab" data-toggle="tab" aria-expanded="false">Kişisel Bilgiler</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#tab_content3" role="tab" id="iletisimbilgileri-tab2" data-toggle="tab" aria-expanded="false">İletişim Bilgileri</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in form-horizontal" id="tab_content1" aria-labelledby="home-tab">
+                                    <div class="x_title">
+                                        <h2>Genel Bilgiler</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Ad</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ad)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Meslek</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.meslek)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Soyad</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.soyad)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Departman</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.departman)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">İşe Giriş Tarihi</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ise_giris_tarihi)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Tahsil</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.tahsil)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">İzin Günü</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.gunler.gun)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Brüt Maaş</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.brut_maas)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Statü</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.statu)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Görev</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.gorev)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">E-Posta</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.e_posta)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Şifre</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.sifre)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Ev Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ev_tel)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Cep Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.cep_tel)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">İş Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.is_tel)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade form-horizontal" id="tab_content2" aria-labelledby="profile-tab">
+                                    <div class="x_title">
+                                        <h2>Kişisel Bilgiler</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">T.C. Kimlik No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.tc_kimlik_no)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">İlk Soyad</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ilk_soyad)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Cinsiyet</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.cinsiyet)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Doğum Tarihi</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.dogum_tarihi)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Doğum Yeri</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.dogum_yeri)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">S.S.K. No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ssk_no)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Anne Adı</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.anne_adi)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Baba Adı</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.baba_adi)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Medeni Hal</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.medeni_hal)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Çocuk Sayısı</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.cocuk_sayisi)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Kan Grubu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.kan_grubu)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nüfus Seri No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.nufus_seri_no)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nüfus No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.nufus_no)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nüfusa Kayıtlı İl</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.nfs_kayitli_il)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nüfusa&nbspKayıtlı&nbspİlçe</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.nfs_kayitli_ilce)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Nüfusa&nbspKayıtlı<br />Mahalle/Köy</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.nfs_kytli_mah_koy)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Cilt No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.cilt_no)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Aile Sıra No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.aile_sira_no)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Sıra No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.sira_no)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Vergi No</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.vergi_no)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade form-horizontal" id="tab_content3" aria-labelledby="profile-tab">
+                                    <div class="x_title">
+                                        <h2>İletişim Bilgileri</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Ev Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.ev_tel)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">İş Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.is_tel)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Cep Telefonu</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.cep_tel)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Adres İl</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.adres_il)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Adres İlçe</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.adres_ilce)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-2 col-xs-12">Adres</label>
+                                        <div class="control-label col-md-4 col-sm-4 col-xs-12" style="text-align: left;">
+                                            @Html.DisplayFor(model => model.adres)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="width:692px; height:429px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="modal_close" type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Fotoğraf Kayıt</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3" style="width:auto;">
+                        <div id="webcam"></div>
+                        <div class="row" style="text-align:center;">
+                            <button class="btn btn-small" id="take_photo" onclick="base64_toimage()">Fotoğraf Çek</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="width:auto;">
+                        <img id="cekilen_foto" style="width:320px; height:240px;" />
+                        <div class="row" style="text-align:center; margin-top:5px;">
+                            <button class="btn btn-small" id="delete_photo">Fotoğraf Sil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal_close2" type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                <button id="save_photo" type="button" class="btn btn-primary" data-dismiss="modal">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/swfobject.js"></script>
+    <script language="JavaScript" src="~/js/scriptcam.js"></script>
+    <script language="JavaScript">
+        $(document).ready(function () {
+            $("#webcam").scriptcam({
+                showMicrophoneErrors: false,
+                onError: onError,
+                onWebcamReady: onWebcamReady,
+                onPictureAsBase64: base64_tofield_and_image
+            });
+        });
+        function base64_tofield() {
+            $('#formfield').val($.scriptcam.getFrameAsBase64());
+        };
+        function base64_toimage() {
+            var src = $.scriptcam.getFrameAsBase64();
+            $('#image').attr("src", "data:image/png;base64," + src);
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ImageData", "Employees")',
+                dataType: 'json',
+                data: { imageSource: src },
+                success: function (data) {
+                    $('#cekilen_foto').attr("src", "data:image/png;base64," + data);
+                }
+            });
+        };
+        function base64_tofield_and_image(b64) {
+            $('#formfield').val(b64);
+            $('#image').attr("src", "data:image/png;base64," + b64);
+        };
+        function changeCamera() {
+            $.scriptcam.changeCamera($('#cameraNames').val());
+        }
+        function onError(errorId, errorMsg) {
+            $("#btn1").attr("disabled", true);
+            $("#btn2").attr("disabled", true);
+            alert(errorMsg);
+        }
+        function onWebcamReady(cameraNames, camera, microphoneNames, microphone, volume) {
+            $.each(cameraNames, function (index, text) {
+                $('#cameraNames').append($('<option></option>').val(index).html(text))
+            });
+            $('#cameraNames').val(camera);
+        }
+    </script>
+    <script>
+        var tempPhoto = $('#EmployeePhoto').attr("src");
+        $('#ad').keyup(function () {
+            document.getElementById('sol_ad').innerText = this.value;
+        });
+        $('#soyad').keyup(function () {
+            document.getElementById('sol_soyad').innerText = this.value;
+        });
+        $('#meslek').keyup(function () {
+            document.getElementById('sol_meslek').innerText = this.value;
+        });
+        $('#delete_photo').click(function () {
+            $('#cekilen_foto').attr("src", null);
+        });
+        $('#save_photo').click(function () {
+            var cekilenPhoto = $('#cekilen_foto').attr("src");
+            $('#cekilen_foto').attr("src", null);
+            if (cekilenPhoto == null) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DeletePhoto", "Employees")',
+                    success: function () {
+                        var tempCinsiyet = $('#cinsiyet').val();
+                        switch (tempCinsiyet) {
+                            case "Bay":
+                                $('#EmployeePhoto').attr("src", "/images/user_male_profile.png");
+                                break;
+                            case "Bayan":
+                                $('#EmployeePhoto').attr("src", "/images/user_female_profile.png");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+            }
+            else {
+                $('#EmployeePhoto').attr("src", cekilenPhoto);
+            }
+        });
+        $('#cinsiyet').change(function () {
+            var changedValue = $('#cinsiyet').val();
+            var currentImagePath = $('#EmployeePhoto').attr("src");
+            if (currentImagePath.indexOf("/images/") != -1)
+            {
+                switch (changedValue) {
+                    case "Bay":
+                        $('#EmployeePhoto').attr("src", "/images/user_male_profile.png");
+                        break;
+                    case "Bayan":
+                        $('#EmployeePhoto').attr("src", "/images/user_female_profile.png");
+                        break;
+                    default:
+                        $('#EmployeePhoto').attr("src", "/images/soru-isareti-2.png");
+                        break;
+                }
+            }
+        });
+    </script>
+}

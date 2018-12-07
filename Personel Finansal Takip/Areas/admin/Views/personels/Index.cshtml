@@ -1,0 +1,298 @@
+﻿@model IEnumerable<Personel_Finansal_Takip.Models.personel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ilk_soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tc_kimlik_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cinsiyet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dogum_tarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dogum_yeri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.baba_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anne_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ise_giris_tarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isten_cikis_tarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ssk_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medeni_hal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cocuk_sayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departman)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gorev)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tahsil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.meslek)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ev_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cep_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.e_posta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres_il)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adres_ilce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kan_grubu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nufus_seri_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nufus_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nfs_kayitli_il)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nfs_kayitli_ilce)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nfs_kytli_mah_koy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cilt_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aile_sira_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sira_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vergi_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aciklama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimBoyutu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DosyaIsmi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimVeri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brut_maas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.net_maas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gunler.gun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personel_rol.rol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ilk_soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tc_kimlik_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cinsiyet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dogum_tarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dogum_yeri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.baba_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anne_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ise_giris_tarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isten_cikis_tarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ssk_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medeni_hal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cocuk_sayisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departman)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gorev)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tahsil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.meslek)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ev_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cep_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.e_posta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres_il)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adres_ilce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kan_grubu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nufus_seri_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nufus_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nfs_kayitli_il)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nfs_kayitli_ilce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nfs_kytli_mah_koy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cilt_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aile_sira_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sira_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vergi_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aciklama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResimBoyutu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DosyaIsmi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResimVeri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brut_maas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.net_maas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gunler.gun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.personel_rol.rol)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

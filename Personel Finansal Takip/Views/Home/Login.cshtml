@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personel Finansal Takip - Giriş</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <!-- Custom styling plus plugins -->
+    <link href="~/css/custom.css" rel="stylesheet">
+    <link href="~/css/icheck/flat/green.css" rel="stylesheet">
+</head>
+<body style="background:#F7F7F7;">
+    <div class="">
+        <div id="wrapper">
+            <div id="login" class="animate form">
+                <section class="login_content">
+                    <form action="@Url.Action("Login","Home")" method="post">
+                        <h1>Personel Finansal Takip</h1>
+                        <div>
+                            <input type="text" name="email" class="form-control" placeholder="E-mail" required="" />
+                        </div>
+                        <div>
+                            <input type="password" name="password" class="form-control" placeholder="Şifre" required="" />
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-default submit" value="Giriş" />
+                        </div>
+                        <div class="alert alert-info alert-dismissible fade in" role="alert"
+                             style="margin-top: 10px; margin-bottom: 0;">
+                            İlk giriş için şifreniz T.C. kimlik numaranızdır.
+                        </div>
+                        @if (ViewBag.LoginError != null)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade in" role="alert"
+                                 style="margin-top: 10px; margin-bottom: 0;">
+                                @ViewBag.LoginError
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                        </div>
+                    </form>
+                    <!-- form -->
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

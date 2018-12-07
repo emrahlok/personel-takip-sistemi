@@ -1,0 +1,115 @@
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\ApplicationInsights.config
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\csc.exe
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\vbc.exe
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\VBCSCompiler.exe
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.dll.config
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.pdb
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Antlr3.Runtime.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.SqlServer.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Web.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Newtonsoft.Json.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Helpers.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Mvc.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Optimization.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Razor.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Razor.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\WebGrease.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.SqlServer.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Web.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Helpers.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Mvc.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Optimization.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Razor.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Razor.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Antlr3.Runtime.pdb
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\bin\Newtonsoft.Json.xml
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.dll
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.pdb
+C:\Users\Zeynep\Desktop\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.csprojResolveAssemblyReference.cache
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\ApplicationInsights.config
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\csc.exe
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\System.Collections.Immutable.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\System.Reflection.Metadata.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\vbc.exe
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\VBCSCompiler.exe
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\roslyn\VBCSCompiler.exe.config
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.dll.config
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Personel Finansal Takip.pdb
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Antlr3.Runtime.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.SqlServer.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.DependencyCollector.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Web.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.WindowsServer.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.ApplicationInsights.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.Web.Infrastructure.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Newtonsoft.Json.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Helpers.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Mvc.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Optimization.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Razor.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Deployment.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Razor.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\WebGrease.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\EntityFramework.SqlServer.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.DependencyCollector.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.Web.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.AI.WindowsServer.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.ApplicationInsights.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Helpers.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Mvc.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Optimization.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.Razor.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Deployment.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\System.Web.WebPages.Razor.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Antlr3.Runtime.pdb
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Newtonsoft.Json.xml
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.pdb
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\bin\Rotativa.dll
+D:\Downloads\Projeler\Personel Finansal Takip\Personel Finansal Takip\obj\Debug\Personel Finansal Takip.csprojResolveAssemblyReference.cache

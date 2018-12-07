@@ -1,0 +1,331 @@
+﻿@model Personel_Finansal_Takip.Areas.admin.Models.BordroPartialModel
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Başlıksız Belge</title>
+    <style type="text/css">
+        table.ilk_tablo td {
+            border-bottom: thin solid black;
+            padding: 0px 4px 0px 4px;
+            text-align: center;
+        }
+
+        table.ilk_tablo th {
+            border-bottom: thin solid black;
+            padding: 8px 4px 0px 4px;
+            text-align: center;
+        }
+
+        table.ikinci_tablo td {
+            border-bottom: thin solid black;
+            padding: 0px 4px 0px 4px;
+            text-align: center;
+        }
+
+        table.ikinci_tablo th {
+            border-bottom: thin solid black;
+            padding: 8px 4px 0px 4px;
+            text-align: left;
+        }
+
+        table.ucuncu_table td {
+            border: thin solid black;
+            padding: 0px 4px 0px 4px;
+            text-align: center;
+        }
+
+        table.ucuncu_table th {
+            border: thin solid black;
+            text-align: center;
+        }
+
+        body {
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="float:left;">
+        <div style="border:1px solid black; padding:0px 0px 16px 0px; float:left; width:100%;">
+            <div style="text-align:center;"><p><label><strong>@Html.DisplayFor(x => x.personelmaas.ay_yil) ÜCRET BORDROSU</strong></label></p></div>
+            <div style="width:25%; height:auto; text-align:right; float:left;">
+                <label>Firma Ünvanı : </label><br>
+                <label>Merkez Adres : </label><br>
+                <label>Şube Adres : </label><br>
+                <label>Vergi Dairesi / Vergi No : </label><br>
+                <label>Firma İnternet Adresi : </label><br>
+            </div>
+            <div style="width:25%; height:auto; text-align:left; float:left">
+                <label>Firma Ünvanı</label><br>
+                <label>Merkez Adres</label><br>
+                <label>Şube Adres</label><br>
+                <label>Vergi Dairesi / Vergi No</label><br>
+                <label>Firma İnternet Adresi</label>
+            </div>
+            <div style="width:25%; height:auto; text-align:right; float:left">
+                <label></label><br>
+                <label></label><br>
+                <label></label><br>
+                <label>SGK İşyeri No : </label><br>
+                <label>Ticaret Sicil No : </label><br>
+            </div>
+            <div style="width:25%; height:auto; text-align:left; float:left">
+                <label></label><br>
+                <label></label><br>
+                <label></label><br>
+                <label>SGK İşyeri No</label><br>
+                <label>Ticaret Sicil No</label><br>
+            </div>
+        </div>
+        <table class="ilk_tablo" cellspacing="0" style="width:100%;">
+            <tbody>
+                <tr>
+                    <th>
+                        S.No
+                    </th>
+                    <th>
+                        Sigorta&nbsp;No
+                    </th>
+                    <th>
+                        Adı&nbsp;Soyadı<br>
+                        T.C.&nbsp;Kimlik&nbsp;No<br>
+                    </th>
+                    <th>
+                        Ücret&nbsp;Şekli
+                        Ay/Yıl
+                    </th>
+                    <th>
+                        İşe&nbsp;Gir.Tar.<br>
+                        İş.Çık.Tar.<br>
+                    </th>
+                    <th>
+                        Çl.<br>
+                        Gn.<br>
+                    </th>
+                    <th>
+                        Hs.<br>
+                        Gn.<br>
+                    </th>
+                    <th>
+                        Gen.<br>
+                        Tat.<br>
+                    </th>
+                    <th>
+                        Ücr.<br>
+                        İzin<br>
+                    </th>
+                    <th>
+                        Üsz.<br>
+                        İzin<br>
+                    </th>
+                    <th>
+                        Sıh.<br>
+                        İzin<br>
+                    </th>
+                    <th>
+                        Yıl.<br>
+                        İzin<br>
+                    </th>
+                    <th>
+                        Mz.<br>
+                        İzin<br>
+                    </th>
+                    <th>
+                        Ücr.<br>
+                        Gn.<br>
+                    </th>
+                    <th>
+                        Pr.Gn.<br>
+                        Saati<br>
+                    </th>
+                    <th>
+                        Gn.Br.Üc.<br>
+                        Kanun&nbsp;No<br>
+                    </th>
+                    <th>
+                        Brüt&nbsp;Ücret<br>
+                        Brüt&nbsp;Toplam<br>
+                    </th>
+                    <th>
+                        Fazla&nbsp;Mesai<br>
+                        Sair&nbsp;Ödeme<br>
+                    </th>
+                    <th>
+                        Vergi&nbsp;Matrahı<br>
+                        Dev.Ver.Mat.<br>
+                    </th>
+                    <th>
+                        Sigorta&nbsp;Mat.<br>
+                        Damga&nbsp;Ver.<br>
+                    </th>
+                    <th>
+                        Gelir&nbsp;Ver.<br>
+                        As.Geç.İnd.<br>
+                    </th>
+                    <th>
+                        Sigorta&nbsp;Kes.<br>
+                        İşs.Sig.Kes.<br>
+                    </th>
+                    <th>
+                        Gelir&nbsp;Ver.İst.<br>
+                        İşv.SGK&nbsp;İst.<br>
+                    </th>
+                    <th>
+                        Vergi&nbsp;İnd.<br>
+                        Sair&nbsp;Kes.<br>
+                    </th>
+                    <th>
+                        Net&nbsp;Ücret<br>
+                        Ödenecek<br>
+                    </th>
+                    <th>
+                        İmza<br>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.personel.ssk_no)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.personel.ad)&nbsp;@Html.DisplayFor(a => a.ppuantaj.personel.soyad)<br>
+                        @Html.DisplayFor(a => a.ppuantaj.personel.tc_kimlik_no)
+                    </td>
+                    <td>
+                        AYLIK<br>
+                        @Html.DisplayFor(a => a.personelmaas.ay_yil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.personel.ise_giris_tarihi)<br>
+                        @Html.DisplayFor(a => a.ppuantaj.personel.isten_cikis_tarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.calisilan_gun)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.hafta_tatili)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.genel_tatil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.ucretli_izin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.ucretsiz_izin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.sihhi_izin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.yillik_izin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.mazeretsiz_izin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.ucret_gun)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.sigorta_gun)<br>
+                        @Html.DisplayFor(a => a.ppuantaj.sigorta_saat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.gun_brut_ucreti)<br>
+                        05510
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.personel.brut_maas)<br>
+                        @Html.DisplayFor(a => a.personelmaas.brut_toplam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.fazla_mesai)<br>
+                        @Html.DisplayFor(a => a.personelmaas.sair_odeme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.vergi_matrahi)<br>
+                        0.00
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.sigorta_matrahi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.damga_vergisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.gelir_vergisi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.asgari_gecim_indirimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.sigorta_kesintisi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.issizlik_sigortasi_kesintisi)
+                    </td>
+                    <td>
+                        0.00<br>
+                        @Html.DisplayFor(a => a.personelmaas.isveren_sgk_istisnasi)
+                    </td>
+                    <td>
+                        0.00<br>
+                        0.00
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.net_ucret)<br>
+                        @Html.DisplayFor(a => a.personelmaas.odenecek_ucret)
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="11" style="text-align:right;">
+                        TOPLAM :
+                    </td>
+                    <td colspan="3"></td>
+                    <td>
+                        @Html.DisplayFor(a => a.ppuantaj.sigorta_gun)<br>
+                        @Html.DisplayFor(a => a.ppuantaj.sigorta_saat)
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.personel.brut_maas)<br>
+                        @Html.DisplayFor(a => a.personelmaas.brut_toplam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.fazla_mesai)<br>
+                        0.00
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.vergi_matrahi)<br>
+                        0.00
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.sigorta_matrahi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.damga_vergisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.gelir_vergisi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.asgari_gecim_indirimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.sigorta_kesintisi)<br>
+                        @Html.DisplayFor(a => a.personelmaas.issizlik_sigortasi_kesintisi)
+                    </td>
+                    <td>
+                        0.00<br>
+                        @Html.DisplayFor(a => a.personelmaas.isveren_sgk_istisnasi)
+                    </td>
+                    <td>
+                        0.00<br>
+                        0.00
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => a.personelmaas.net_ucret)<br>
+                        @Html.DisplayFor(a => a.personelmaas.odenecek_ucret)
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

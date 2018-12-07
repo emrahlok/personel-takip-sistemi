@@ -1,0 +1,375 @@
+﻿@model Personel_Finansal_Takip.Models.izinler
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/employee/Views/Shared/_Layout.cshtml";
+    var asdf = new Personel_Finansal_Takip.Areas.employee.Models.IzinStatePartialView(Model.personel_id);
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>İzin</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.id)
+                            @Html.HiddenFor(model => model.son_degisiklik)
+                            @Html.HiddenFor(model => model.talep_tarihi)
+                            @Html.HiddenFor(model => model.onay_tarihi)
+                            @Html.HiddenFor(model => model.personel_id)
+
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="control-label col-md-2" style="width: 13%;">İzin Türü</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.DropDownList("tur_id", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.tur_id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İzin Başlangıç</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.izin_baslangic, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izin_baslangic, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">İzin Bitiş</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.EditorFor(model => model.izin_bitis, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izin_bitis, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İşe Başlangıç</label>
+                                    <div class="col-md-4">
+                                        @Html.EditorFor(model => model.ise_baslangic, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ise_baslangic, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Süre(Gün)</label>
+                                    <div class="col-md-2" style="width: 12%;">
+                                        @Html.EditorFor(model => model.sure, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.sure, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Yol İzni</label>
+                                    <div class="col-md-2" style="width: 12%;">
+                                        @Html.EditorFor(model => model.yol_izni, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.yol_izni, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">İz. Bul. Adres</label>
+                                    <div class="col-md-4">
+                                        @Html.TextAreaFor(model => model.izinde_bul_adres, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.izinde_bul_adres, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-2" style="width: 13%;">Açıklama</label>
+                                    <div class="col-md-4" style="width: 37%;">
+                                        @Html.TextAreaFor(model => model.aciklama, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <a href="@Url.Action("Index", "Izin")" class="btn btn-default">Vazgeç</a>
+                                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>İzim Durumum</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @foreach (var states in asdf.izinStates)
+            {
+                            <div class="x_title" style="border: 2px solid #E6E9ED;">
+                                @states.stateTitle
+                                <div class="progress" style="margin-bottom: 0;">
+                                    @if (states.percentage >= 0 && states.percentage <= 25)
+                                    {
+                                        <div class="progress-bar progress-bar-success" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 26 && states.percentage <= 50)
+                                    {
+                                        <div class="progress-bar progress-bar-info" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 51 && states.percentage <= 75)
+                                    {
+                                        <div class="progress-bar progress-bar-warning" style="width: @states.statePercentage;"></div>
+                                    }
+                                    else if (states.percentage >= 76 && states.percentage <= 100)
+                                    {
+                                        <div class="progress-bar progress-bar-danger" style="width: @states.statePercentage;"></div>
+                                    }
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        var remainValues = @Html.Raw(Json.Encode(asdf.izinStates));
+        var activeRemaining = null;
+        var oneDay = 24 * 60 * 60 * 1000;
+        //$('#izin_baslangic').keyup(function () {
+        //    alert(this.val());
+        //});
+        Date.prototype.yyyymmdd = function () {
+            var yyyy = this.getFullYear().toString();
+            var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+            var dd = this.getDate().toString();
+            return yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]); // padding
+        };
+        $('#izin_baslangic').change(function () {
+            if(activeRemaining == 0) {
+                $('#izin_baslangic').val("");
+                $('#izin_bitis').val("");
+                $('#ise_baslangic').val("");
+                return;
+            } else {
+                var izbasval = $('#izin_baslangic').val();
+                var izbasdate = new Date(izbasval);
+                var izbitval = $('#izin_bitis').val();
+                var izbitdate = new Date();
+                if(izbitval == "") {
+                    izbitdate.setDate(izbasdate.getDate());
+                    $('#izin_bitis').val(izbitdate.yyyymmdd());
+                } else {
+                    izbitdate = new Date(izbitval);
+                }
+                var isbasval = $('#ise_baslangic').val();
+                var isbasdate = new Date();
+                if(isbasval == "") {
+                    isbasdate.setDate(izbitdate.getDate() + 1);
+                    $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                } else {
+                    isbasdate = new Date(isbasval);
+                }
+                if(izbasdate > izbitdate) {
+                    $('#izin_bitis').val(izbasval);
+                    izbitdate = izbasdate;
+                }
+                if(izbitdate >= isbasdate) {
+                    isbasdate.setDate(izbitdate.getDate() + 1);
+                    $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                }
+                var asdf = izbitdate - izbasdate;
+                var gunfarki = (asdf / oneDay) + 1;
+                console.log(gunfarki);
+                if(gunfarki > activeRemaining) {
+                    izbitdate.setDate(izbasdate.getDate() + activeRemaining - 1);
+                    $('#izin_bitis').val(izbitdate.yyyymmdd());
+                    if(izbitdate >= isbasdate) {
+                        isbasdate.setDate(izbitdate.getDate() + 1);
+                        $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                    }
+                }
+                asdf = izbitdate - izbasdate;
+                gunfarki = (asdf / oneDay) + 1;
+                console.log(gunfarki);
+                $('#sure').val(gunfarki);
+            }
+        });
+        $('#izin_bitis').change(function () {
+            if(activeRemaining == 0) {
+                $('#izin_baslangic').val("");
+                $('#izin_bitis').val("");
+                $('#ise_baslangic').val("");
+                return;
+            } else {
+                var izbitval = $('#izin_bitis').val();
+                var izbitdate = new Date(izbitval);
+                var izbasval = $('#izin_baslangic').val();
+                var izbasdate = new Date();
+                if(izbasval == "") {
+                    izbasdate.setDate(izbitdate.getDate());
+                    $('#izin_baslangic').val(izbitdate.yyyymmdd());
+                } else {
+                    izbasdate = new Date(izbasval);
+                }
+                var isbasval = $('#ise_baslangic').val();
+                var isbasdate = new Date();
+                if(isbasval == "") {
+                    isbasdate.setDate(izbitdate.getDate() + 1);
+                    $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                } else {
+                    isbasdate = new Date(isbasval);
+                }
+                if(izbasdate > izbitdate) {
+                    $('#izin_baslangic').val(izbitdate.yyyymmdd());
+                    izbasdate = izbitdate;
+                }
+                if(izbitdate >= isbasdate) {
+                    isbasdate.setDate(izbitdate.getDate() + 1);
+                    $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                }
+                var asdf = izbitdate - izbasdate;
+                var gunfarki = (asdf / oneDay) + 1;
+                console.log(gunfarki);
+                if(gunfarki > activeRemaining) {
+                    izbasdate.setDate(izbitdate.getDate() - activeRemaining + 1);
+                    $('#izin_baslangic').val(izbasdate.yyyymmdd());
+                    if(izbitdate >= isbasdate) {
+                        isbasdate.setDate(izbitdate.getDate() + 1);
+                        $('#ise_baslangic').val(isbasdate.yyyymmdd());
+                    }
+                }
+                asdf = izbitdate - izbasdate;
+                gunfarki = (asdf / oneDay) + 1;
+                console.log(gunfarki);
+                $('#sure').val(gunfarki);
+            }
+        });
+        $('#ise_baslangic').change(function () {
+            if(activeRemaining == 0) {
+                $('#izin_baslangic').val("");
+                $('#izin_bitis').val("");
+                $('#ise_baslangic').val("");
+                return;
+            }
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            var izbitval = $('#izin_bitis').val();
+            var izbitdate = new Date(izbitval);
+            if (izbitval != "") {
+                if (izbasdate > izbitdate) {
+                    $('#izin_bitis').val(izbasval);
+                }
+            }
+            else
+                $('#izin_bitis').val(izbasval);
+
+            izbitval = $('#izin_bitis').val();
+            izbitdate = new Date(izbitval);
+            var asdf = izbitdate - izbasdate;
+            var oneDay = 24 * 60 * 60 * 1000;
+            console.log(asdf / oneDay);
+            $('#sure').val((asdf / oneDay) + 1);
+            var isbasval = $('#ise_baslangic').val();
+            var isbasdate = new Date();
+            if (isbasval == "") {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+            else
+                isbasdate = new Date(isbasval);
+            if (izbitdate >= isbasdate) {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+        });
+        $('#sure').change(function () {
+            var sureValue = $('#sure').val();
+            console.log(sureValue);
+            var izbasval = $('#izin_baslangic').val();
+            var izbasdate = new Date(izbasval);
+            if (izbasval == "") {
+                var currentDate = new Date();
+                currentDate.setDate(currentDate.getDate() + 1);
+                $('#izin_baslangic').val(currentDate.yyyymmdd());
+                izbasval = $('#izin_baslangic').val();
+                izbasdate = currentDate;
+            }
+            var izbitdate = izbasdate;
+            if (sureValue > 0) {
+                sureValue = sureValue - 1;
+                izbitdate.setDate(izbitdate.getDate() + sureValue);
+                $('#izin_bitis').val(izbitdate.yyyymmdd());
+            }
+            else
+                $('#izin_bitis').val(izbasval);
+
+            var isbasval = $('#ise_baslangic').val();
+            var isbasdate = new Date();
+            if (isbasval == "") {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+            else
+                isbasdate = new Date(isbasval);
+            if (izbitdate >= isbasdate) {
+                isbasdate.setDate(izbitdate.getDate() + 1);
+                $('#ise_baslangic').val(isbasdate.yyyymmdd());
+            }
+        });
+        $('#tur_id').change(function() {
+            var e = document.getElementById("tur_id");
+            var strUser = e.options[e.selectedIndex].text;
+            var pattern = RegExp(strUser, 'i');
+            [].forEach.call(remainValues, function (data) {
+                if (pattern.test(data.stateTitle)) {
+                    activeRemaining = data.remain;
+                    if(data.remain == 0) {
+                        $('#sure').attr("min", "0");
+                        $('#sure').attr("max", data.remain);
+                        $('#sure').val(0);
+                        $('#izin_baslangic').val("");
+                        $('#izin_bitis').val("");
+                        $('#ise_baslangic').val("");
+                    } else {
+                        $('#sure').attr("min", "1");
+                        $('#sure').attr("max", data.remain);
+                        $('#sure').val(1);
+                        var dateNow = new Date();
+                        dateNow.setDate(dateNow.getDate() + 1);
+                        $('#izin_baslangic').val(dateNow.yyyymmdd());
+                        $('#izin_bitis').val(dateNow.yyyymmdd());
+                        dateNow.setDate(dateNow.getDate() + 1);
+                        $('#ise_baslangic').val(dateNow.yyyymmdd());
+                        $('#sure').attr("min", "1");
+                    }
+                }
+            });
+        });
+        $(document).ready(function () {
+            var e = document.getElementById("tur_id");
+            var strUser = e.options[e.selectedIndex].text;
+            var pattern = RegExp(strUser, 'i');
+            [].forEach.call(remainValues, function (data) {
+                if (pattern.test(data.stateTitle)) {
+                    activeRemaining = data.remain;
+                    if(data.remain == 0) {
+                        $('#sure').attr("min", "0");
+                        $('#sure').attr("max", data.remain);
+                        $('#sure').val(0);
+                        $('#izin_baslangic').val("");
+                        $('#izin_bitis').val("");
+                        $('#ise_baslangic').val("");
+                    } else {
+                        $('#sure').attr("min", "1");
+                        $('#sure').attr("max", data.remain);
+                        $('#sure').val(1);
+                        var dateNow = new Date();
+                        dateNow.setDate(dateNow.getDate() + 1);
+                        $('#izin_baslangic').val(dateNow.yyyymmdd());
+                        $('#izin_bitis').val(dateNow.yyyymmdd());
+                        dateNow.setDate(dateNow.getDate() + 1);
+                        $('#ise_baslangic').val(dateNow.yyyymmdd());
+                        $('#sure').attr("min", "1");
+                    }
+                }
+            });
+        });
+    </script>
+}
